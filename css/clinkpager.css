@@ -1,0 +1,118 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2015-6-12, 14:05:04
+    Author     : macrochen
+*/
+
+/****************表格相关****************/
+.grid-view {
+    width: 100%;
+    border: 1px solid #cccccc;
+    //border-top: 0;
+    background: #FFFFFF;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.items thead input{
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    max-width: 100%;
+    background-color: transparent;
+}
+
+.items {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.items thead > tr > th,
+.items tbody > tr > th,
+.items tfoot > tr > th,
+.items thead > tr > td,
+.items tbody > tr > td,
+.items tfoot > tr > td {
+    padding: 5px;
+    font-weight: normal;
+    line-height: 2;
+    border-top: 1px solid #dddddd;
+    text-align: center;
+}
+
+.items thead > tr > td,
+.items tbody > tr > td,
+.items tfoot > tr > td {
+    font-size: 14px;
+}
+
+.items thead > tr > th {
+    vertical-align: bottom;
+    background: rgba(170,170,170,0.2);
+    border-bottom: 1px solid #dddddd;
+}
+
+.items caption + thead > tr:first-child > th,
+.items colgroup + thead > tr:first-child > th,
+.items thead:first-child > tr:first-child > th,
+.items caption + thead > tr:first-child > td,
+.items colgroup + thead > tr:first-child > td,
+.items thead:first-child > tr:first-child > td {
+    border-top: 0;
+}
+
+.items tbody + tbody {
+    border-top: 2px solid #dddddd;
+}
+
+
+.items {
+    background-color: #ffffff;
+}
+
+.grid-view .items thead > tr > th,
+.grid-view .items tbody > tr > th,
+.grid-view .items tfoot > tr > th,
+.grid-view .items thead > tr > td,
+.grid-view .items tbody > tr > td,
+.grid-view .items tfoot > tr > td {
+    padding: 5px;
+}
+
+.grid-view .items {
+    border: 1px solid #e5e5e5;
+}
+
+.grid-view .items thead > tr > th,
+.grid-view .items tbody > tr > th,
+.grid-view .items tfoot > tr > th,
+.grid-view .items thead > tr > td,
+.grid-view .items tbody > tr > td,
+.grid-view .items tfoot > tr > td {
+    border: 1px solid #e5e5e5;
+    word-break:break-all;
+}
+
+
+.grid-view .items tbody > tr:hover > td,
+.grid-view .items tbody > tr:hover > th {
+    background-color: #f5f5f5;
+}
+
+/**************页码相关***************/
+.grid-view .pager {
+  padding-left: 0;
+  margin: 20px 0;
+  //text-align: right;
+  list-style: none;
+}
+.grid-view .pager .previous{
+    //text-align: right;
+}

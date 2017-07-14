@@ -1,0 +1,33 @@
+/* 数据表单 */
+div form .row label{position: relative; display: inline-block; width:25%; padding-right:20px; text-align:right; vertical-align:baseline;}
+div form .row label span{position: absolute; right: 5px;}
+div form .row textarea{display: inline-block; border-radius:5px; min-width:45%; max-width:70%; float:none;width:auto;padding:0;}
+div form .row input{display: inline-block; border-radius:5px; min-width:45%; max-width:70%; float:none;width:auto;padding:0;}
+div form .row input[type=submit]{float:right;}
+div form .row .errorMessage{margin-left: 25%; pandding-left:20px;}
+div form .row .errorSummary ul{}
+div form .errorSummary li{list-style: disc;}
+div form .buttons{display: inline-block; width:25%; padding-right:20px; text-align:right;}
+
+div form .row select, div form .row option{border-radius:5px;min-width:45%; max-width:70%; }
+div form .row a{vertical-align:baseline;padding:0 5px;text-decoration: underline !important; color: #0e509e;}
+div form .widget_fileupload{margin-left: 25%; pandding-left:20px;}
+div form input[type=button]{min-width: 0; padding: 1px 5px;}
+
+/* 登录表单 */
+#login-form{width: 90%;margin: 0 auto;padding-top: 100px;}
+#login-form .row{height: 50px;}
+#login-form .row label{display: inline-block; width:33%; padding-right:20px; text-align:right;}
+#login-form .row input{display: inline-block; border-radius:5px; width:33%; float:none;}
+#login-form .row .errorMessage{margin-left: 33%; pandding-left:20px;}
+#login-form .row .errorSummary ul{}
+#login-form .errorSummary li{list-style: disc;}
+#login-form .verify input{min-width:0; max-width:100%;width:120px;}
+#login-form .verify_image{display: block; margin-left: 33%; }
+#login-form .rememberMe input{min-width:0; max-width:100%;width:auto;} 
+#login-form .buttons{display: inline-block; margin-left:50%; padding-right:30px;}
+#login-form .buttons input{min-width:0; max-width:100%;width:60px}
+
+/* 弹层 */
+#mydialog li{display:inline-block;min-width:33%;padding-right:10px;}
+#mydialog li label{display:inline;}
