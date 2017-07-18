@@ -24,7 +24,7 @@
         $cs->registerScriptFile($themePath . '/js/bootstrap.min.js', CClientScript::POS_END);
         
         ?>
-        
+
     </head>
     
     <?php echo $content; ?>

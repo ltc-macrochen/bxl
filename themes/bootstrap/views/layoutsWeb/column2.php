@@ -1,5 +1,5 @@
 <?php /* @var $this Controller */ ?>
-<?php $this->beginContent('//layouts2/main'); ?>
+<?php $this->beginContent('//layoutsWeb/main'); ?>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-sm-4">
                     <h2><?php echo $this->title;?></h2>

@@ -7,7 +7,7 @@
  */
 class WebController extends Controller {
 
-    public $layout = '//layouts/one';
+    public $layout = '//layoutsWeb/main';
 
     public function actionIndex(){
         $this->render('index');
