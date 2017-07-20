@@ -1,0 +1,12 @@
+h1,h2,h3,h4,h5,a,span{color:#676a6c;}
+.bxl-slogan{float: left;height: 50px;line-height: 20px;background-color: #fff;color: #666;margin: 0;padding: 15px 25px;font-size: 18px;}
+#page-wrapper{padding: 0;}
+#page-wrapper .navbar-toggle{margin-right: 20px;}
+.bxl-web-wraper{padding: 40px 0 !important;}
+.bxl-web-wraper .container{padding: 0;}
+.bxl-item{padding-bottom: 0;}
+.bxl-item .bxl-btn{border-top:1px solid #eee;}
+.bxl-item .bxl-btn button{font-size: 16px;width:66px;}
+.bxl-user .bxl-head{width: 40px;height: 40px;border-radius: 100%;}
+.bxl-article span{font-size: 16px;}
+.bxl-article .bxl-thumb{margin-top:10px;}

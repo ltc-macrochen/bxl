@@ -88,7 +88,7 @@ class Controller extends CController {
         
         $this->title = ucfirst($id);
 		$this->title = isset(Constant::$_MODEL_LANGUAGE_MAP[ucfirst($id)]) ? Constant::$_MODEL_LANGUAGE_MAP[ucfirst($id)] : '后台管理系统';
-        
+
         //强制登录检查
         if ($id !="site" && Yii::app()->user->isGuest) {
             Yii::app()->user->loginRequired();

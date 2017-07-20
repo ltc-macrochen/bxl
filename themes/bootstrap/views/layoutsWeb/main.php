@@ -27,7 +27,7 @@
     <meta name="keywords" content="爆笑驴啦啦啦啦">
     <meta name="description" content="爆笑驴啦啦啦啦">
     <link rel="icon" type="image/vnd.microsoft.icon" href="/web/img/icon.ico">
-    <title><?php echo isset($title) ? $title : $this->pageTitle;?></title>
+    <title><?php echo isset($title) ? $title : '爆笑驴::爆笑笑话_糗事笑话_爆笑GIF_内涵段子_冷笑话_专注幽默搞笑网站！';?></title>
 
     <!-- Bootstrap -->
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
@@ -45,6 +45,7 @@
     $cs->registerCssFile($themePath . '/css/animate.css');
     $cs->registerCssFile($themePath . '/css/style.css');
     ?>
+    <link rel="stylesheet" type="text/css" href="/web/css/project.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -54,9 +55,77 @@
     <![endif]-->
 
 </head>
-<body class="">
+<body class="top-navigation  pace-done">
+    <div id="wrapper">
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom white-bg">
+                <div class="container" style="padding: 0;">
+                    <nav class="navbar navbar-static-top" role="navigation">
+                        <div class="navbar-header">
+                            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                                <i class="fa fa-reorder"></i>
+                            </button>
+                            <a href="http://www.baoxiaolv.cn" class="navbar-brand">爆笑驴</a>
+                            <a class="navbar-toggle bxl-slogan">开心一整天~</a>
+                        </div>
+                        <div class="navbar-collapse collapse" id="navbar">
+                            <ul class="nav navbar-nav">
+                                <li class="active">
+                                    <a aria-expanded="false" role="button" href="/">首页</a>
+                                </li>
+                                <li class="">
+                                    <a aria-expanded="false" role="button" href="#" >热门</a>
+                                </li>
+                                <li class="">
+                                    <a aria-expanded="false" role="button" href="#" >新鲜</a>
+                                </li>
+                                <li class="">
+                                    <a aria-expanded="false" role="button" href="#" >神回复</a>
+                                </li>
+                                <li class="">
+                                    <a aria-expanded="false" role="button" href="#" >趣图</a>
+                                </li>
+                                <li class="">
+                                    <a aria-expanded="false" role="button" href="#" >段子</a><!--<i class="fa fa-angle-right"></i>-->
+                                </li>
+                                <!-- demo
+                                <li class="dropdown">
+                                    <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> 段子 <span class="caret"></span></a>
+                                    <ul role="menu" class="dropdown-menu">
+                                        <li><a href="">菜单列表</a>
+                                        </li>
+                                        <li><a href="">菜单列表</a>
+                                        </li>
+                                        <li><a href="">菜单列表</a>
+                                        </li>
+                                        <li><a href="">菜单列表</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                -->
+                            </ul>
+                            <ul class="nav navbar-top-links navbar-right">
+                                <li>
+                                    <a href="login.html" tppabs="http://www.zi-han.net/theme/hplus/login.html">
+                                        <i class="fa fa-sign-out"></i> 退出
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <?php echo $content; ?>
+            <div class="footer">
+                <div class="pull-right">
+                    By：<a href="javascript:if(confirm('http://www.zi-han.net/  \n\nτݾҢδӀ Teleport Pro ȡܘìӲΪ ̼քԲܲ·޶Ӭڽߪʼθַאʨ׃ք׶Χc  \n\nţҪՓؾϱǷʏղߪ̼ðÿ'))window.location='http://www.zi-han.net/'" tppabs="http://www.zi-han.net/" target="_blank">zihan's blog</a>
+                </div>
+                <div>
+                    <strong>Copyright</strong> H+ &copy; 2014
+                </div>
+            </div>
 
-        <?php echo $content; ?>
-
+        </div>
+    </div>
 </body>
 </html>

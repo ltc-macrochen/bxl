@@ -6,65 +6,145 @@
  * Time: 11:28
  */
 ?>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+
+<div class="wrapper wrapper-content bxl-web-wraper">
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/"><?php echo isset($title) ? $title : '';?></a>
-</div>
-<div id="navbar" class="navbar-collapse collapse">
-    <div class="pull-left clearfix">
-        <ul class="nav navbar-nav">
-            <li role="presentation" class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    标签 <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu row" style="">
-                    <li class="col-xs-4 col-lg-3">
-                        <a href="/">这是个标签</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+        <div class="row">
+            <div class="col-md-8 col-lg-8">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content bxl-item">
+                        <div>
+                            <span class="pull-right text-right hidden">
+                                <small>在过去的一个月销售的平均值：<strong>山东</strong></small>
+                                <br/>
+                                所有销售： 162,862
+                            </span>
+                            <div class="bxl-user">
+                                <a href="">
+                                    <img class="bxl-head" src="/web/images/head-default.jpg" alt="">
+                                    <span class="bxl-nick">一头驴子</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="m-t-sm">
+
+                            <a class="bxl-article">
+                                <h2 class="bxl-title">
+                                    lalal
+                                </h2>
+                                <div class="bxl-content">
+                                    <span>爆笑驴爆笑驴，啦啦啦啦啦</span>
+                                </div>
+                                <div class="bxl-thumb text-center">
+                                    <img src="/web/images/head-default.jpg" alt="">
+                                </div>
+                            </a>
+
+                        </div>
+
+                        <div class="m-t-md">
+                            <div class="pull-right hidden">
+                                <i class="fa fa-clock-o"> </i>
+                                2015.02.30更新
+                            </div>
+                            <div class="bxl-btn">
+                                <button type="button" class="btn btn-link">
+                                    <i class="fa fa-thumbs-o-up"></i><!--fa-thumbs-up-->
+                                    <span>0</span>
+                                </button>
+                                <button type="button" class="btn btn-link">
+                                    <i class="fa fa-thumbs-o-down"></i><!--fa-thumbs-o-down-->
+                                    <span>0</span>
+                                </button>
+                                <button type="button" class="btn btn-link">
+                                    <i class="fa fa fa-comment-o"></i>
+                                </button>
+                                <button type="button" class="btn btn-link">
+                                    <a href="javascript:;" class="jiathis jiathis_txt jtico_jiathis" target="_blank">
+                                        <i class="fa fa-share-alt"></i>
+                                    </a>
+                                </button>
+                                <!-- JiaThis Button BEGIN -->
+                                <script type="text/javascript" >
+                                    var jiathis_config={
+                                        url:"http://www.jiathis.com",
+                                        title:"自定义TITLE #微博话题#",
+                                        summary:"分享的文本摘要",
+                                        pic:"自定义分享的图片连接地址",
+                                        shortUrl:false,
+                                        hideMore:false
+                                    }
+                                </script>
+                                <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+                                <!-- JiaThis Button END -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>用户行为统计</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <small class="stats-label">访问页面 / 浏览量</small>
+                                <h4>236 321.80</h4>
+                            </div>
+
+                            <div class="col-xs-4">
+                                <small class="stats-label">% 新访客</small>
+                                <h4>46.11%</h4>
+                            </div>
+                            <div class="col-xs-4">
+                                <small class="stats-label">最后一周</small>
+                                <h4>432.021</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <small class="stats-label">访问页面 / 浏览量</small>
+                                <h4>643 321.10</h4>
+                            </div>
+
+                            <div class="col-xs-4">
+                                <small class="stats-label">% 新访客</small>
+                                <h4>92.43%</h4>
+                            </div>
+                            <div class="col-xs-4">
+                                <small class="stats-label">最后一周</small>
+                                <h4>564.554</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <small class="stats-label">访问页面 / 浏览量</small>
+                                <h4>436 547.20</h4>
+                            </div>
+
+                            <div class="col-xs-4">
+                                <small class="stats-label">% 新访客</small>
+                                <h4>150.23%</h4>
+                            </div>
+                            <div class="col-xs-4">
+                                <small class="stats-label">最后一周</small>
+                                <h4>124.990</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="pull-right clearfix col-lg-8" style="top: 9px;">
-            <div class="col-lg-4">
-                <div class="input-group" style="">
-                    <input type="text" class="form-control" id="nav-video-search" placeholder="请输入关键词" maxlength="20">
-                    <span class="input-group-btn">
-                                <button type="button" class="btn btn-default" onclick="searchVideo();return false;">
-                                    <i class="glyphicon glyphicon-search"></i>
-                                    搜索
-                                </button>
-                            </span>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn nav-btn" onclick="addFavorite();return false;">
-                        <i class="glyphicon glyphicon-star-empty"></i>
-                        收藏书签
-                    </button>
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="/site/partner" type="button" class="btn nav-btn">收录申请</a>
-                </div>
-            </div>
-        <div class="col-lg-4">
-            <div class="btn-group" role="group">
-                <a href="/site/ad" type="button" class="btn nav-btn">广告合作</a>
-            </div>
-            <div class="btn-group" role="group">
-                <a href="https://www.emoneyspace.com/mitaosex" target="_blank" type="button" class="btn nav-btn">地址发布</a>
-            </div>
-        </div>
-    </div>
 </div>
-</div>
-</nav>
