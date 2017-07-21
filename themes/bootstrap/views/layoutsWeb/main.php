@@ -46,6 +46,7 @@
     $cs->registerCssFile($themePath . '/css/style.css');
     ?>
     <link rel="stylesheet" type="text/css" href="/web/css/project.css">
+    <script type="text/javascript" src="/web/js/project.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

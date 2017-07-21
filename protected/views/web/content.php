@@ -2,11 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: macrochen
- * Date: 2017/7/17
- * Time: 11:28
+ * Date: 2017/7/21
+ * Time: 17:37
  */
 ?>
-
 <div class="wrapper wrapper-content bxl-web-wraper">
     <div class="container">
         <div class="row">
@@ -39,6 +38,14 @@
                                     <img src="/web/images/head-default.jpg" alt="">
                                 </div>
                             </a>
+                            <div class="text-center">
+                                <div class="pull-left">
+                                    <a href=""><i class="fa fa-hand-o-left"></i> 上一条</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href=""><i class="fa fa-hand-o-right"></i> 下一条</a>
+                                </div>
+                            </div>
 
                         </div>
 
@@ -88,7 +95,5 @@
             <!--side right-->
             <?php require_once 'side-right.php';?>
         </div>
-
     </div>
-
 </div>

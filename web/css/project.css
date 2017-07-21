@@ -1,8 +1,13 @@
 h1,h2,h3,h4,h5,a,span{color:#676a6c;}
+@media (min-width: 1200px){
+    .container{width: 960px!important;}
+}
+.ibox .ibox-title{padding:7px 15px 7px;}
 .bxl-slogan{float: left;height: 50px;line-height: 20px;background-color: #fff;color: #666;margin: 0;padding: 15px 25px;font-size: 18px;}
-#page-wrapper{padding: 0;}
+#navbar li{padding-left: 10px;}
+#page-wrapper{padding: 0;background-color: #ebebeb;}
 #page-wrapper .navbar-toggle{margin-right: 20px;}
-.bxl-web-wraper{padding: 40px 0 !important;}
+.bxl-web-wraper{padding: 15px 0 !important;}
 .bxl-web-wraper .container{padding: 0;}
 .bxl-item{padding-bottom: 0;}
 .bxl-item .bxl-btn{border-top:1px solid #eee;}
@@ -10,3 +15,15 @@ h1,h2,h3,h4,h5,a,span{color:#676a6c;}
 .bxl-user .bxl-head{width: 40px;height: 40px;border-radius: 100%;}
 .bxl-article span{font-size: 16px;}
 .bxl-article .bxl-thumb{margin-top:10px;}
+
+.bxl-ibox-right{margin-bottom: 10px!important;}
+.bxl-tougao {padding: 5px!important;}
+.bxl-tougao a {display:block;height:62px;width:100%;line-height:62px;background-color: #00a9d5;color: #fff;font-size: 24px;}
+.bxl-qrcode img{margin-bottom: 10px;}
+.bxl-qrcode p{margin: 0;}
+.bxl-ibox-right .ibox-content{padding: 10px;}
+.bxl-recommend img{height: 126px;width: auto;}
+.bxl-recommend p{width: auto;height:20px;margin:5px 5px 10px 5px;overflow:hidden;font-size: 14px;}
+.bxl-recommend .col-md-6{padding: 5px 0 0 5px;}
+.bxl-tag a{padding: 0px 2px 2px 2px;font-size: 14px;}
+
