@@ -2,6 +2,7 @@ h1,h2,h3,h4,h5,a,span{color:#676a6c;}
 @media (min-width: 1200px){
     .container{width: 960px!important;}
 }
+.ibox{margin-bottom: 15px!important;}
 .ibox .ibox-title{padding:7px 15px 7px;}
 .bxl-slogan{float: left;height: 50px;line-height: 20px;background-color: #fff;color: #666;margin: 0;padding: 15px 25px;font-size: 18px;}
 #navbar li{padding-left: 10px;}
@@ -27,3 +28,11 @@ h1,h2,h3,h4,h5,a,span{color:#676a6c;}
 .bxl-recommend .col-md-6{padding: 5px 0 0 5px;}
 .bxl-tag a{padding: 0px 2px 2px 2px;font-size: 14px;}
 
+.bxl-btn-view{margin-top: 20px;}
+.bxl-btn-view a{color: #fff;background-color: #fcbf00;font-size: 22px;border-radius: 22px;}
+.bxl-btn-view .btn:hover{color: #1ab394;background-color: #fcbf00;}
+
+.bxl-comment .ibox-title{height: 32px;line-height: 32px;font-size: 18px;padding: 7px 20px;}
+.bxl-comment .ibox-content{border-style: none;padding-top:0;margin-bottom: 50px;}
+.bxl-comment .comment-input-action{background-color: #eee;}
+.bxl-comment .bxl-comment-limit{height: 32px;line-height: 32px;margin-right: 10px;}

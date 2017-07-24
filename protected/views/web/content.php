@@ -38,12 +38,14 @@
                                     <img src="/web/images/head-default.jpg" alt="">
                                 </div>
                             </a>
-                            <div class="text-center">
-                                <div class="pull-left">
-                                    <a href=""><i class="fa fa-hand-o-left"></i> 上一条</a>
-                                </div>
-                                <div class="pull-right">
-                                    <a href=""><i class="fa fa-hand-o-right"></i> 下一条</a>
+                            <div class="row text-center bxl-btn-view">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="pull-left btn-group" role="group">
+                                        <a href="" class="btn btn-link"><i class="fa fa-hand-o-left"></i> 上一条</a>
+                                    </div>
+                                    <div class="pull-right btn-group" role="group">
+                                        <a href="" class="btn btn-link">下一条 <i class="fa fa-hand-o-right"></i></a>
+                                    </div>
                                 </div>
                             </div>
 
@@ -90,6 +92,94 @@
                     </div>
                 </div>
 
+                <!--猜你喜欢-->
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h3>猜你喜欢</h3>
+                    </div>
+                    <div class="ibox-content text-center bxl-recommend">
+                        <div class="row">
+                            <div class="col-xs-3 col-md-3">
+                                <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
+                                <p>扫描二维码 关注爆笑驴微信</p>
+                            </div>
+                            <div class="col-xs-3 col-md-3">
+                                <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
+                                <p>扫描二维码 关注爆笑驴微信</p>
+                            </div>
+                            <div class="col-xs-3 col-md-3">
+                                <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
+                                <p>扫描二维码 关注爆笑驴微信</p>
+                            </div>
+                            <div class="col-xs-3 col-md-3">
+                                <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
+                                <p>扫描二维码 关注爆笑驴微信</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--热门推荐-->
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h3>热门推荐</h3>
+                    </div>
+                    <div class="ibox-content text-center bxl-recommend">
+                        <div class="row">
+                            <div class="col-xs-3 col-md-3">
+                                <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
+                                <p>扫描二维码 关注爆笑驴微信</p>
+                            </div>
+                            <div class="col-xs-3 col-md-3">
+                                <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
+                                <p>扫描二维码 关注爆笑驴微信</p>
+                            </div>
+                            <div class="col-xs-3 col-md-3">
+                                <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
+                                <p>扫描二维码 关注爆笑驴微信</p>
+                            </div>
+                            <div class="col-xs-3 col-md-3">
+                                <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
+                                <p>扫描二维码 关注爆笑驴微信</p>
+                            </div>
+                            <div class="col-xs-3 col-md-3">
+                                <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
+                                <p>扫描二维码 关注爆笑驴微信</p>
+                            </div>
+                            <div class="col-xs-3 col-md-3">
+                                <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
+                                <p>扫描二维码 关注爆笑驴微信</p>
+                            </div>
+                            <div class="col-xs-3 col-md-3">
+                                <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
+                                <p>扫描二维码 关注爆笑驴微信</p>
+                            </div>
+                            <div class="col-xs-3 col-md-3">
+                                <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
+                                <p>扫描二维码 关注爆笑驴微信</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--评论-->
+                <div class="ibox float-e-margins bxl-comment">
+                    <div class="ibox-title">
+                        爆笑评论（<i class="text-danger">3 </i>条评论）
+                    </div>
+                    <div class="ibox-content bxl-recommend">
+                        <textarea class="form-control" title="说点什么吧，期待您的神回复！" rows="5" placeholder="说点什么吧，期待您的神回复！"></textarea>
+                        <div class="comment-input-action">
+                            <a class="btn btn-info" href="">登录</a>
+                            <span>登录后评论可立即显示，并获得积分！</span>
+                            <input type="submit" class="btn btn-danger pull-right" value="评论">
+                            <span class="pull-right bxl-comment-limit">还可输入<span class="text-danger">300</span>字</span>
+                        </div>
+                        <div class="comment-list">
+
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!--side right-->
