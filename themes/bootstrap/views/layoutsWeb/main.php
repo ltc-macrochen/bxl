@@ -47,6 +47,7 @@
     ?>
     <link rel="stylesheet" type="text/css" href="/web/css/project.css">
     <script type="text/javascript" src="/web/js/project.js"></script>
+    <script type="text/javascript" src="/web/js/referrer-killer.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -105,7 +106,17 @@
                                 </li>
                                 -->
                             </ul>
-                            <ul class="nav navbar-top-links navbar-right">
+                            <ul class="nav navbar-top-links navbar-right hidden">
+                                <li>
+                                    <a href="login.html" tppabs="http://www.zi-han.net/theme/hplus/login.html">
+                                        <i class="fa fa-user"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="login.html" tppabs="http://www.zi-han.net/theme/hplus/login.html">
+                                        <i class="fa fa-sign-in"></i> 登录
+                                    </a>
+                                </li>
                                 <li>
                                     <a href="login.html" tppabs="http://www.zi-han.net/theme/hplus/login.html">
                                         <i class="fa fa-sign-out"></i> 退出

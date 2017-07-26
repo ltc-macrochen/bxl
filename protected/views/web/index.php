@@ -35,8 +35,11 @@
                                 <div class="bxl-content">
                                     <span>爆笑驴爆笑驴，啦啦啦啦啦</span>
                                 </div>
-                                <div class="bxl-thumb text-center">
-                                    <img src="/web/images/head-default.jpg" alt="">
+                                <div class="bxl-thumb text-center" id="image_kill_referrer">
+                                    <img src="https://image2.pengfu.com/origin/170726/5978431a27233.gif" alt="">
+                                    <script>
+                                        document.getElementById('image_kill_referrer').innerHTML = ReferrerKiller.imageHtml('https://image2.pengfu.com/origin/170726/5978431a27233.gif');
+                                    </script>
                                 </div>
                             </a>
 

@@ -83,7 +83,7 @@ class SiteController extends Controller {
             $model->attributes = $_POST['LoginForm'];
             // validate user input and redirect to the previous page if valid
             if ($model->validate() && $model->login()){
-                $this->redirect(CHtml::normalizeUrl(array("/stat/user")));
+                $this->redirect(CHtml::normalizeUrl(array("/site/index")));
             }
         }
         
