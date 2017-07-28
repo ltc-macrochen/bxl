@@ -6,8 +6,9 @@
 
 <?php
 $this->breadcrumbs = array(
-    '内容管理' => array("index"),
-    $this->title,
+    'Cms Posts' => array('index'),
+    $model->title => array('view', 'id' => $model->id),
+    'Update',
 );
 
 $this->menu = array(
@@ -20,13 +21,4 @@ $this->menu = array(
 ?>
 
 
-<?php $this->renderPartial('_form', array('model' => $model, 'site' => $site, 'category'=>$category, 'picSize'=>$picSize)); ?>
-
-<script>
-$(function(){
-    if ($("#CmsPost_siteId").val() != "0" && $("#CmsPost_catId").val() != "0") {
-        $("#CmsPost_siteId").attr("disabled","disabled");
-        $("#CmsPost_catId").attr("disabled","disabled");
-    }
-})
-</script>
+<?php $this->renderPartial('_form', array('model' => $model)); ?>

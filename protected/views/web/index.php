@@ -28,9 +28,9 @@
                         </div>
 
                         <div class="m-t-sm">
-                            <a class="bxl-article" href="/web/content">
+                            <a class="bxl-article" href="<?php echo $this->createUrl('/web/content');?>">
                                 <h2 class="bxl-title">
-                                    lalal
+                                    lalal2
                                 </h2>
                                 <div class="bxl-content">
                                     <span>爆笑驴爆笑驴，啦啦啦啦啦</span>

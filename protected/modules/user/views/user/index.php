@@ -1,12 +1,12 @@
 <?php
 
-/* @var $this CmsPrivilegeController */
+/* @var $this UserController */
 /* @var $dataProvider CActiveDataProvider */
 ?>
 
 <?php
 $this->breadcrumbs = array(
-    'Cms Privileges',
+    'Users',
 );
 
 $this->menu = array(
@@ -20,7 +20,7 @@ $this->menu = array(
 
 <?php
 $this->widget('bootstrap.widgets.BsGridView', array(
-    'id' => 'cms-privilege-grid',
+    'id' => 'user-grid',
     'dataProvider' => $dataProvider,
     'template' => '{pager}{summary}{items}{pager}',
     'summaryText' => '第 {start}-{end} 条,&nbsp;&nbsp;共 {count} 条.',
@@ -35,9 +35,22 @@ $this->widget('bootstrap.widgets.BsGridView', array(
     ),
     'columns'=>array(
         		'id',
-		'adminId',
-		'siteId',
-		'catId',
+		'roleId',
+		'openId',
+		'nick',
+		'head',
+		'name',
+		/*
+		'title',
+		'sex',
+		'desc',
+		'email',
+		'mobile',
+		'status',
+		'registerTime',
+		'loginTime',
+		'blockEndTime',
+		*/
         array(
             'class' => 'BsButtonColumn',
             'template' => '{view} {update} {delete}',

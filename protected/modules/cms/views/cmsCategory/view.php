@@ -5,12 +5,12 @@
 
 <?php
 $this->breadcrumbs = array(
-    '类别管理',
-    $this->title,
+    'Cms Categories' => array('index'),
+    $model->name,
 );
 
 $this->menu = array(
-    //array('icon' => 'glyphicon glyphicon-list', 'label' => '全部', 'url' => array('index')),
+    array('icon' => 'glyphicon glyphicon-list', 'label' => '全部', 'url' => array('index')),
     //array('icon' => 'glyphicon glyphicon-search', 'label' => '搜索', 'url' => array('admin')),
     array('icon' => 'glyphicon glyphicon-plus-sign', 'label' => '创建', 'url' => array('create')),
     array('icon' => 'glyphicon glyphicon-list-alt', 'label' => '查看', 'url' => array('view', 'id' => $model->id)),
@@ -29,19 +29,19 @@ $this->widget('bootstrap.widgets.BsDetailView', array(
     'data' => $model,
     'attributes' => array(
 		'id',
-		'siteId',
-		'parentId',
-		'parents',
-		'childCount',
-		'leafCount',
-		'title',
-		'slug',
-		'keywords',
+		'name',
 		'description',
-		'template',
-		'banner',
-		'status',
+        array(
+            'name' => '缩略图',
+            'type' => 'raw',
+            'value' => CHtml::image($model->thumb, '', array('style' => 'max-height:200px;'))
+        ),
+        array(
+            'name' => '审核状态',
+            'value' => Common::statusSelected($model->status, Constant::$_STATUS_LIST_SHOW)
+        ),
 		'createTime',
+		'updateTime',
     ),
 ));
 ?>

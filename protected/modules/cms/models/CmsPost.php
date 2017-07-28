@@ -1,22 +1,24 @@
 <?php
 
 /**
- * This is the model class for table "cms_post".
+ * This is the model class for table "t_cms_post".
  *
- * The followings are the available columns in table 'cms_post':
+ * The followings are the available columns in table 't_cms_post':
  * @property string $id
- * @property integer $siteId
  * @property string $catId
- * @property string $positions
+ * @property string $userId
  * @property string $title
  * @property string $description
  * @property string $content
  * @property string $link
- * @property string $thumb
- * @property string $audio
- * @property string $video
- * @property string $editorId
+ * @property string $imgUrl
+ * @property string $audioUrl
+ * @property string $videoUrl
  * @property integer $status
+ * @property string $viewCount
+ * @property string $commentCount
+ * @property string $vGood
+ * @property string $vBad
  * @property string $createTime
  * @property string $updateTime
  */
@@ -27,7 +29,7 @@ class CmsPost extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'cms_post';
+		return 't_cms_post';
 	}
 
 	/**
@@ -38,16 +40,13 @@ class CmsPost extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('siteId, catId, title, description', 'required'),
-			array('siteId, status', 'numerical', 'integerOnly'=>true),
-			array('catId, editorId', 'length', 'max'=>10),
-			array('positions, thumb, audio, video', 'length', 'max'=>255),
-            array('link', 'length', 'max'=>512),
-            array('title', 'length', 'max'=>35),
-			array('description, content, createTime, updateTime, sortTime, thumb', 'safe'),
+			array('catId, title, status', 'required'),
+			array('status', 'numerical', 'integerOnly'=>true),
+			array('catId, userId, viewCount, commentCount, vGood, vBad', 'length', 'max'=>10),
+			array('title, description, link, imgUrl, audioUrl, videoUrl', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, siteId, catId, positions, title, description, content, link, thumb, audio, video, editorId, status, createTime, updateTime', 'safe', 'on'=>'search'),
+			array('id, catId, userId, title, description, content, link, imgUrl, audioUrl, videoUrl, status, viewCount, commentCount, vGood, vBad, createTime, updateTime', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,9 +58,6 @@ class CmsPost extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-             'site'=>array(self::BELONGS_TO, 'CmsSite', 'siteId'),
-             'category'=>array(self::BELONGS_TO, 'CmsCategory', 'catId'),
-             'editor'=>array(self::BELONGS_TO, 'AdminUser', 'editorId'),
 		);
 	}
 
@@ -71,19 +67,21 @@ class CmsPost extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '内容ID',
-			'siteId' => '所属项目',
-			'catId' => '所属类别',
-			'positions' => '推荐位列表',
-			'title' => '内容标题',
-			'description' => '内容描述',
-			'content' => '文章',
-			'link' => '链接',
-			'thumb' => '缩略图',
-			'audio' => '音频',
-			'video' => '视频',
-			'editorId' => '编辑',
+			'id' => '记录ID',
+			'catId' => '分类',
+			'userId' => '用户',
+			'title' => '标题',
+			'description' => '描述',
+			'content' => '文章内容',
+			'link' => '外链',
+			'imgUrl' => '图片地址',
+			'audioUrl' => '音频地址',
+			'videoUrl' => '视频地址',
 			'status' => '审核状态',
+			'viewCount' => '浏览数',
+			'commentCount' => '评论数',
+			'vGood' => '点赞数',
+			'vBad' => '点踩数',
 			'createTime' => '创建时间',
 			'updateTime' => '更新时间',
 		);
@@ -108,18 +106,20 @@ class CmsPost extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('siteId',$this->siteId);
 		$criteria->compare('catId',$this->catId,true);
-		$criteria->compare('positions',$this->positions,true);
+		$criteria->compare('userId',$this->userId,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('content',$this->content,true);
 		$criteria->compare('link',$this->link,true);
-		$criteria->compare('thumb',$this->thumb,true);
-		$criteria->compare('audio',$this->audio,true);
-		$criteria->compare('video',$this->video,true);
-		$criteria->compare('editorId',$this->editorId,true);
+		$criteria->compare('imgUrl',$this->imgUrl,true);
+		$criteria->compare('audioUrl',$this->audioUrl,true);
+		$criteria->compare('videoUrl',$this->videoUrl,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('viewCount',$this->viewCount,true);
+		$criteria->compare('commentCount',$this->commentCount,true);
+		$criteria->compare('vGood',$this->vGood,true);
+		$criteria->compare('vBad',$this->vBad,true);
 		$criteria->compare('createTime',$this->createTime,true);
 		$criteria->compare('updateTime',$this->updateTime,true);
 

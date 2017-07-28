@@ -50,38 +50,21 @@ class CmsCategoryController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
     public function actionCreate() {
-        $this->title = "新建类别";
         $model = new CmsCategory;
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
         if (isset($_POST['CmsCategory'])) {
-            $modelRepeat = CmsCategory::model()->findByAttributes(array('siteId' => $_POST['CmsCategory']["siteId"], "title"=> $_POST['CmsCategory']["title"]));
-            if ($modelRepeat) {
-                throw new CHttpException("404","对不起，您填写的类别名称重复！");
-                return;
-            }        
-            
             $model->attributes = $_POST['CmsCategory'];
-
-            // Set default value
-            $model->parentId = 0;
-            $model->parents = "0";
-            $model->childCount = $model->leafCount = 0;
             $model->createTime = date('Y-m-d H:i:s');
-            
             if ($model->save()) {
-                CmsSite::model()->updateCounters(array("catCount"=>1),"id=".$model->siteId);
-                $this->redirect(array('index'));
+                $this->redirect(array('view', 'id' => $model->id));
             }
         }
-        
-        $siteId = isset($_GET["siteId"])?$_GET["siteId"]:0;
 
         $this->render('create', array(
             'model' => $model,
-            'siteId' => $siteId,
         ));
     }
 
@@ -91,23 +74,16 @@ class CmsCategoryController extends Controller {
      * @param integer $id the ID of the model to be updated
      */
     public function actionUpdate($id) {
-        $this->title = "编辑类别";
         $model = $this->loadModel($id);
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
         if (isset($_POST['CmsCategory'])) {
-            $modelRepeat = CmsCategory::model()->findByAttributes(array('siteId' => $model->siteId, "title"=> $_POST['CmsCategory']["title"]));
-            if ($_POST['CmsCategory']["title"]!=$model->title && $modelRepeat) {
-                throw new CHttpException("404","对不起，您填写的类别名称重复！");
-                return;
-            }
-            
             $model->attributes = $_POST['CmsCategory'];
+            $model->updateTime = date('Y-m-d H:i:s');
             if ($model->save()) {
-                CmsCategory::model()->flushCachedCat($id);
-                $this->redirect(array('index?siteId='.$model->siteId));
+                $this->redirect(array('view', 'id' => $model->id));
             }
         }
 
@@ -123,14 +99,15 @@ class CmsCategoryController extends Controller {
      */
     public function actionDelete($id) {
         if (Yii::app()->request->isPostRequest) {
-            $model = $this->loadModel($id);
-            $model->status = Constant::STATUS_DELETE;
-            if ($model->save()) {
-                CmsCategory::model()->flushCachedCat($id);
-                $this->redirect(array('index'));
+            // we only allow deletion via POST request
+            $this->loadModel($id)->delete();
+
+            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+            if (!isset($_GET['ajax'])) {
+                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
             }
         } else {
-            throw new CHttpException(404, '对不起，您的请求非法！');
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
         }
     }
 
@@ -138,42 +115,9 @@ class CmsCategoryController extends Controller {
      * Lists all models.
      */
     public function actionIndex() {
-        $this->title = "类别列表";
-        $siteId = Yii::app()->request->getQuery('siteId', 0);
-        $text = Yii::app()->request->getQuery('text', '');
-        
-        //权限检查 项目管理员只能查看自己对应的项目的信息
-        if(Yii::app()->user->roleId != Constant::ADMIN_ROLE_ADMINISTRATOR){
-            $user = AdminUser::model()->findByPk(Yii::app()->user->id);
-            $siteId = $user->siteId;
-        } 
-        $sites = $this->getUserSites();
-        $querySiteId = Yii::app()->request->getQuery('siteId');
-        if($querySiteId == null && count($sites) == 1){
-            $siteId = $sites[0]["id"];
-            $this->redirect('index?siteId=' . $siteId);
-        }
-        
-        $criteria=new CDbCriteria;
-        $criteria->order = "t.id asc";        
-        if($text){
-            $criteria->compare('title',$text,true);
-        }
-        $criteria->compare('siteId',$siteId);
-        //不显示已经删除的类别
-        $criteria->compare('status','<'.Constant::STATUS_DELETE);
-          
-        $param = array(
-            'criteria' => $criteria,
-            'countCriteria' => $criteria,            
-            'pagination' => array('pageSize' => 10),
-        );        
-        
-        $dataProvider = new CActiveDataProvider('CmsCategory',$param);
+        $dataProvider = new CActiveDataProvider('CmsCategory');
         $this->render('index', array(
             'dataProvider' => $dataProvider,
-            'sites' => $sites,
-            'siteId' => $siteId,
         ));
     }
 

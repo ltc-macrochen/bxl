@@ -17,15 +17,10 @@ class Controller extends CController {
      * @var type 
      */
     public $naviMap = array(
-        array('label' => '用户统计', 'url' => array('/stat/user'), 'icon'=>"fa-user"),
-        array('label' => '移动端统计', 'url' => array('/stat/mobile'), 'icon'=>"fa-tablet"),
-        array('label' => 'PC端统计', 'url' => array('/stat/pc'), 'icon'=>"fa-desktop"),
-        array('label' => '内容播放统计', 'url' => array('/stat/content'), 'icon'=>"fa-video-camera"),
-        array('label' => '数据录入', 'url' => array(""), 'sub'=>array(
-            array('label' => '用户', 'url' => array('/userStat/index')),
-            array('label' => '移动端', 'url' => array('/mobileStat/index')),
-            array('label' => 'PC端', 'url' => array('/pcStat/index')),
-            array('label' => '内容播放', 'url' => array('/contentStat/index')),
+        array('label' => '用户管理', 'url' => array('/user/user/index'), 'icon'=>"fa-user"),
+        array('label' => '内容管理', 'url' => array(""), 'sub'=>array(
+            array('label' => '分类', 'url' => array('/cms/cmsCategory/index')),
+            array('label' => '文章', 'url' => array('/cms/cmsPost/index')),
         ), 'icon'=>"fa-database"),    
         array('label' => '系统配置', 'url' => array('/admin/adminUser/index'), 'sub'=>array(
             array('label' => '管理员配置', 'url' => array('/admin/adminUser/index')),

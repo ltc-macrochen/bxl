@@ -1,11 +1,11 @@
 <?php
-/* @var $this CmsCategoryController */
-/* @var $model CmsCategory */
+/* @var $this UserController */
+/* @var $model User */
 /* @var $form BSActiveForm */
 ?>
 
 <?php $form=$this->beginWidget('bootstrap.widgets.BsActiveForm', array(
-    'id'=>'cms-category-form',
+    'id'=>'user-form',
     // Please note: When you enable ajax validation, make sure the corresponding
     // controller action is handling ajax validation correctly.
     // There is a call to performAjaxValidation() commented in generated controller code.
@@ -19,10 +19,20 @@
     <?php echo $form->errorSummary($model); ?>
     
             
-    <?php echo $form->textFieldControlGroup($model,'name'); ?>
-    <?php echo $form->textAreaControlGroup($model,'description',array('rows'=>3)); ?>
-    <?php echo $form->uploadPicControlGroup($model,'thumb'); ?>
-    <?php echo $form->dropDownListControlGroup($model,'status', CHtml::listData(Constant::$_STATUS_LIST_SHOW, 'value', 'show')); ?>
+    <?php echo $form->textAreaControlGroup($model,'roleId',array('rows'=>6)); ?>
+    <?php echo $form->textAreaControlGroup($model,'openId',array('rows'=>6)); ?>
+    <?php echo $form->textAreaControlGroup($model,'nick',array('rows'=>6)); ?>
+    <?php echo $form->textAreaControlGroup($model,'head',array('rows'=>6)); ?>
+    <?php echo $form->textAreaControlGroup($model,'name',array('rows'=>6)); ?>
+    <?php echo $form->textAreaControlGroup($model,'title',array('rows'=>6)); ?>
+    <?php echo $form->textAreaControlGroup($model,'sex',array('rows'=>6)); ?>
+    <?php echo $form->textAreaControlGroup($model,'desc',array('rows'=>6)); ?>
+    <?php echo $form->textAreaControlGroup($model,'email',array('rows'=>6)); ?>
+    <?php echo $form->textAreaControlGroup($model,'mobile',array('rows'=>6)); ?>
+    <?php echo $form->textAreaControlGroup($model,'status',array('rows'=>6)); ?>
+    <?php echo $form->textAreaControlGroup($model,'registerTime',array('rows'=>6)); ?>
+    <?php echo $form->textAreaControlGroup($model,'loginTime',array('rows'=>6)); ?>
+    <?php echo $form->textAreaControlGroup($model,'blockEndTime',array('rows'=>6)); ?>
 
     <?php echo BsHtml::formActions(array(BsHtml::submitButton($model->isNewRecord ? '创建' : '更新', array('color' => BsHtml::BUTTON_COLOR_PRIMARY)))); ?>
 
@@ -32,6 +42,4 @@
 $themePath = Yii::app()->theme->baseUrl;?>
 <?php $cs->registerCssFile($themePath . '/css/plugins/datetimepicker/bootstrap-datetimepicker.css');?><?php $cs->registerScriptFile($themePath . '/js/plugins/datetimepicker/moment-with-locales.js', CClientScript::POS_END); ?>
 <?php $cs->registerScriptFile($themePath . '/js/plugins/datetimepicker/bootstrap-datetimepicker.js', CClientScript::POS_END); ?>
-<?php $cs->registerScriptFIle($themePath . '/js/plugins/plupload/plupload.full.min.js', CClientScript::POS_END);?>
-<?php $cs->registerScriptFIle($themePath . '/js/common.js', CClientScript::POS_END);?>
     

@@ -66,10 +66,10 @@
                                     <li><a href="login.html">Logout</a></li>
                                 </ul>-->
                             </div>
-                            <div class="logo-element">IN+</div>
+                            <div class="logo-element">BXL+</div>
                         </li> 
                         <?php 
-                            foreach ($this->navi as $item) {
+                            foreach ($this->naviMap as $item) {
                                 $menu = $subMenu = "";
 
                                 if (!isset($item["sub"])) {
@@ -160,10 +160,10 @@
             
             <div class="footer">
                 <div class="pull-right">
-                    <a href="http://www.mihecn.com" target="_blank">北京米和科技有限公司</a>
+                    <a href="http://www.baoxiaolv.cn" target="_blank">爆笑驴</a>
                 </div>
                 <div>
-                    <strong>Copyright</strong> Beijing Mihe Technology Co., Ltd. &copy; 2015
+                    <strong>Copyright</strong> Beijing Baoxiaolv Technology Co., Ltd. &copy; 2015
                 </div>
             </div>
 

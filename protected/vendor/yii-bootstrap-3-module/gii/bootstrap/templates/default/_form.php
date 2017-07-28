@@ -78,12 +78,14 @@ if(count($displays)>0){
     echo "\$themePath = Yii::app()->theme->baseUrl;?>\n";
 }
 if(in_array('pic', $displays)||in_array('pics', $displays)){
-    echo "<?php \$cs->registerScriptFile(\$themePath . '/js/plugins/plupload/plupload.full.min.js', CClientScript::POS_END); ?>\n";
+    echo "<?php \$cs->registerScriptFile(\$themePath . '/vendors/plupload/plupload.full.min.js', CClientScript::POS_END); ?>\n";
+    echo "<?php \$cs->registerScriptFile(\$themePath . '/vendors/plupload/zh_CN.js', CClientScript::POS_END); ?>\n";
+    echo "<?php \$cs->registerScriptFile(\$themePath . '/vendors/plupload/pluploadHelp.js', CClientScript::POS_END); ?>\n";
 }
 if(in_array('datetime', $displays)){
-    echo "<?php \$cs->registerCssFile(\$themePath . '/css/plugins/datetimepicker/bootstrap-datetimepicker.css');?>";
-    echo "<?php \$cs->registerScriptFile(\$themePath . '/js/plugins/datetimepicker/moment-with-locales.js', CClientScript::POS_END); ?>\n";
-    echo "<?php \$cs->registerScriptFile(\$themePath . '/js/plugins/datetimepicker/bootstrap-datetimepicker.js', CClientScript::POS_END); ?>\n";
+    echo "<?php \$cs->registerCssFile(\$themePath . '/vendors/bower_components/datetimepicker/bootstrap-datetimepicker.css');?>\n";
+    echo "<?php \$cs->registerScriptFile(\$themePath . '/vendors/bower_components/datetimepicker/moment-with-locales.js', CClientScript::POS_END); ?>\n";
+    echo "<?php \$cs->registerScriptFile(\$themePath . '/vendors/bower_components/datetimepicker/bootstrap-datetimepicker.js', CClientScript::POS_END); ?>\n";
 } 
 ?>
     

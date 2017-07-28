@@ -46,8 +46,8 @@ class BootstrapCode extends CrudCode
     {   
         // 20150620/Samuel
         // 先检测$modelClass，其生成规则优先于列的数据类型规则
-        $display = $pattern['display'];
-        $data = $pattern['data'];
+        $display = isset($pattern['display']) ? $pattern['display'] : 'text';
+        $data = isset($pattern['data']) ? $pattern['data'] : '';
         if($display === 'pic'){
             return "\$form->uploadPicControlGroup(\$model,'{$column->name}')";
         }else if($display === 'pics'){

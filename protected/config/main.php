@@ -37,8 +37,9 @@ return array(
             )
         ),
         'admin',
-
         'service',
+        'user',
+        'cms'
     ),
 
     // application components
@@ -53,14 +54,17 @@ return array(
             //http://www.yiiframework.com/doc/guide/1.1/zh_cn/topics.url
             'showScriptName' => false, //do not include index.php in url
             'rules' => array(
+                //"" => 'web/index',  //@macrochen 一个标准的URL规则，将 '/' 对应到 'site/index'
+                'admin' => 'cms/cmsPost/index',
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ),
+            'urlSuffix' => '.html'       //@macrochen 网址后缀
         ),
         //数据库
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=db_mitaosex',
+            'connectionString' => 'mysql:host=localhost;dbname=db_baoxiaolv',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => 'macro',
@@ -126,4 +130,5 @@ return array(
         // this is used in contact page
         'adminEmail' => 'service@baoxiaolv.com',
     ),
+    'defaultController' => 'web'    //@macrochen 默认controller
 );

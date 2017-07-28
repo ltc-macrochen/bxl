@@ -1,12 +1,12 @@
 <?php
 
-/* @var $this CmsSiteController */
-/* @var $model CmsSite */
+/* @var $this UserController */
+/* @var $model User */
 
 
 $this->breadcrumbs = array(
-    '项目管理',
-    $this->title,
+    'Users' => array('index'),
+    'Manage',
 );
 
 $this->menu = array(
@@ -21,7 +21,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#cms-site-grid').yiiGridView('update', {
+	$('#user-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -34,7 +34,7 @@ $('.search-form form').submit(function(){
 
 <?php
 $this->widget('bootstrap.widgets.BsGridView', array(
-    'id' => 'cms-site-grid',
+    'id' => 'user-grid',
     'dataProvider' => $model->search(),
     'filter' => $model,
     'template' => '{pager}{summary}{items}{pager}',
@@ -50,13 +50,21 @@ $this->widget('bootstrap.widgets.BsGridView', array(
     ),
     'columns' => array(
 		'id',
-		'title',
-		'catCount',
-		'logo',
-		'adminId',
-		'status',
+		'roleId',
+		'openId',
+		'nick',
+		'head',
+		'name',
 		/*
-		'createTime',
+		'title',
+		'sex',
+		'desc',
+		'email',
+		'mobile',
+		'status',
+		'registerTime',
+		'loginTime',
+		'blockEndTime',
 		*/
         array(
             'class' => 'BsButtonColumn',

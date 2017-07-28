@@ -5,12 +5,12 @@
 
 <?php
 $this->breadcrumbs = array(
-    '内容管理' => array("index"),
-    $this->title,
+    'Cms Posts' => array('index'),
+    $model->title,
 );
 
 $this->menu = array(
-    //array('icon' => 'glyphicon glyphicon-list', 'label' => '全部', 'url' => array('index')),
+    array('icon' => 'glyphicon glyphicon-list', 'label' => '全部', 'url' => array('index')),
     //array('icon' => 'glyphicon glyphicon-search', 'label' => '搜索', 'url' => array('admin')),
     array('icon' => 'glyphicon glyphicon-plus-sign', 'label' => '创建', 'url' => array('create')),
     array('icon' => 'glyphicon glyphicon-list-alt', 'label' => '查看', 'url' => array('view', 'id' => $model->id)),
@@ -20,9 +20,6 @@ $this->menu = array(
 
 ?>
 
-<style>
-    table td img{max-width: 100% !important;}
-</style>
 
 <?php
 $this->widget('bootstrap.widgets.BsDetailView', array(
@@ -32,35 +29,30 @@ $this->widget('bootstrap.widgets.BsDetailView', array(
     'data' => $model,
     'attributes' => array(
 		'id',
-        array(
-            "name"=>"项目名称",
-            "value"=>$model->site->title,
+		array(
+            'name' => '分类',
+            //'value' => Common::statusSelected($model->catId, CHtml::listData($this->getAllCategorys(), 'id', 'name'))
         ),
-        array(
-            "name"=>"类别名称",
-            "value"=>$model->category->title,
-        ),
+		'userId',
 		'title',
 		'description',
-        array(
-            "name"=>($model->link=="")?"内容":"外链",
-            "type"=>"raw",
-            "value"=>($model->link=="")?$model->content:$model->link,
+		'content',
+		'link',
+		array(
+		    'name' => '图片',
+            'type' => 'raw',
+            'value' => CHtml::image($model->imgUrl, '', array('style' => 'max-height:200px;'))
         ),
+		'audioUrl',
+		'videoUrl',
         array(
-            "name"=>"图片",
-            "type"=>"raw",
-            "value"=>CHtml::image($model->thumb,'',array('style'=>'max-height:200px;')),
+            'name' => '审核状态',
+            'value' => Common::statusSelected($model->status, Constant::$_STATUS_LIST_SHOW)
         ),
-		'audio',
-        array(
-            "name"=>"编辑",
-            "value"=>($model->editorId==0)?UserIdentity::DEFAULT_ADMINISTRATOR_NAME:$model->editor->realName,
-        ),
-        array(
-            "name"=>"状态",
-            "value"=>  Common::statusSelected($model->status, Constant::$POST_STATUS_LIST),
-        ),         
+		'viewCount',
+		'commentCount',
+		'vGood',
+		'vBad',
 		'createTime',
 		'updateTime',
     ),
@@ -70,6 +62,5 @@ $this->widget('bootstrap.widgets.BsDetailView', array(
 <script>
     $(function () {
         $("table#yw0 th").addClass("col-lg-2 col-sm-2");
-        $("table#yw0 td").css({"word-break":"break-all"});
     })
 </script>

@@ -895,12 +895,15 @@ class BsActiveForm extends CActiveForm
      * @return type                 html代码片
      */    
     const INPUT_TYPE_NUMBER         = "数字";    
+    const INPUT_TYPE_PASSWORD       = "密码";
     const INPUT_TYPE_TEXT_FIELD     = "字符串";
-    const INPUT_TYPE_TEXT_AREA      = "文本";
+    const INPUT_TYPE_TEXT_AREA      = "文本域";
+    const INPUT_TYPE_TEXT_LIST      = "行文本";
     const INPUT_TYPE_TEXT_RICH      = "富文本";     #无法与widget合并，暂不支持
 
-    const INPUT_TYPE_LIST_DROPDOWN  = "多选";
+    const INPUT_TYPE_LIST_DROPDOWN  = "下拉";
     const INPUT_TYPE_CHOICE_MULTI   = "多选";
+    const INPUT_TYPE_CHOICE_SINGLE   = "单选";
     
     const INPUT_TYPE_TIME           = "时间";
     const INPUT_TYPE_DATE           = "日期";
@@ -916,22 +919,28 @@ class BsActiveForm extends CActiveForm
         switch ($type) {
             case self::INPUT_TYPE_NUMBER:
                 $result = $this->numberFieldControlGroup($model,$attribute,$htmlOptions);
-                break;               
+                break;  
+            case self::INPUT_TYPE_PASSWORD:
+                $result = $this->passwordFieldControlGroup($model,$attribute,$htmlOptions);
+                break;              
             case self::INPUT_TYPE_TEXT_FIELD:
                 $result = $this->textFieldControlGroup($model,$attribute,$htmlOptions);
                 break;      
             case self::INPUT_TYPE_TEXT_AREA:
                 $result = $this->textAreaControlGroup($model,$attribute,$htmlOptions);
-                break;    
-            case self::INPUT_TYPE_TEXTFIELD:
-                $result = $this->textFieldControlGroup($model,$attribute,$htmlOptions);
-                break;    
+                break;      
+            case self::INPUT_TYPE_TEXT_LIST:
+                $result = $this->stringsControlGroup($model,$attribute,$htmlOptions);
+                break;                
             case self::INPUT_TYPE_LIST_DROPDOWN:
                 $result = $this->dropDownListControlGroup($model,$attribute,$data, $htmlOptions);
                 break;              
             case self::INPUT_TYPE_CHOICE_MULTI:
                 $result = $this->choiceControlGroup($model,$attribute,$data, $htmlOptions);
-                break;               
+                break;     
+            case self::INPUT_TYPE_CHOICE_SINGLE:
+                $result = $this->checkBoxControlGroup($model,$attribute, $htmlOptions);
+                break;      
             case self::INPUT_TYPE_TIME:
                 $result = $this->timeControlGroup($model,$attribute,$htmlOptions);
                 break;   

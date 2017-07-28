@@ -5,14 +5,14 @@
 
 
 $this->breadcrumbs = array(
-    '类别管理',
-    $this->title,
+    'Cms Categories' => array('index'),
+    'Manage',
 );
 
 $this->menu = array(
     array('icon' => 'glyphicon glyphicon-list', 'label' => '全部', 'url' => array('index')),
     array('icon' => 'glyphicon glyphicon-search', 'label' => '搜索', 'url' => array('admin')),
-    array('icon' => 'glyphicon glyphicon-plus-sign', 'label' => '创建', 'url' => array('create'), 'target' => '_blank'),
+    array('icon' => 'glyphicon glyphicon-plus-sign', 'label' => '创建', 'url' => array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -50,22 +50,21 @@ $this->widget('bootstrap.widgets.BsGridView', array(
     ),
     'columns' => array(
 		'id',
-		'siteId',
-		'parentId',
-		'parents',
-		'childCount',
-		'leafCount',
-		/*
-		'title',
-		'slug',
-		'keywords',
+		'name',
 		'description',
-		'template',
-		'banner',
-		'status',
+//		'thumb',
+        array(
+            'header' => '状态',
+            'value' => 'Common::statusSelected($data->status, Constant::$_STATUS_LIST_SHOW)',
+            'filter'=>BsHtml::activeTextField($model,'status',array("placeHolder"=>"")),
+            'htmlOptions' => array("style"=>"width:6em;"),
+        ),
 		'createTime',
+		/*
+		'updateTime',
 		*/
         array(
+            'header' => ' #',
             'class' => 'BsButtonColumn',
             'template' => '{view} {update} {delete}',
             'viewButtonLabel' => "查看",

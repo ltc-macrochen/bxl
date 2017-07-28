@@ -1,12 +1,12 @@
 <?php
-/* @var $this CmsPrivilegeController */
-/* @var $model CmsPrivilege */
+/* @var $this UserController */
+/* @var $model User */
 ?>
 
 <?php
 $this->breadcrumbs = array(
-    'Cms Privileges' => array('index'),
-    $model->id,
+    'Users' => array('index'),
+    $model->name,
 );
 
 $this->menu = array(
@@ -29,9 +29,20 @@ $this->widget('bootstrap.widgets.BsDetailView', array(
     'data' => $model,
     'attributes' => array(
 		'id',
-		'adminId',
-		'siteId',
-		'catId',
+		'roleId',
+		'openId',
+		'nick',
+		'head',
+		'name',
+		'title',
+		'sex',
+		'desc',
+		'email',
+		'mobile',
+		'status',
+		'registerTime',
+		'loginTime',
+		'blockEndTime',
     ),
 ));
 ?>

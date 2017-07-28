@@ -1,13 +1,13 @@
 <?php
 
-/* @var $this CmsPrivilegeController */
-/* @var $model CmsPrivilege */
+/* @var $this UserController */
+/* @var $model User */
 ?>
 
 <?php
 $this->breadcrumbs = array(
-    'Cms Privileges' => array('index'),
-    $model->id => array('view', 'id' => $model->id),
+    'Users' => array('index'),
+    $model->name => array('view', 'id' => $model->id),
     'Update',
 );
 

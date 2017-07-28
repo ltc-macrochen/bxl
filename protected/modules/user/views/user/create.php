@@ -1,13 +1,13 @@
 <?php
 
-/* @var $this CmsSiteController */
-/* @var $model CmsSite */
+/* @var $this UserController */
+/* @var $model User */
 ?>
 
 <?php
 $this->breadcrumbs = array(
-    '项目管理',
-    $this->title,
+    'Users' => array('index'),
+    'Create',
 );
 
 $this->menu = array(

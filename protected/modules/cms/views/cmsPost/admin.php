@@ -5,8 +5,8 @@
 
 
 $this->breadcrumbs = array(
-    '内容管理',
-    $this->title,
+    'Cms Posts' => array('index'),
+    'Manage',
 );
 
 $this->menu = array(
@@ -50,19 +50,21 @@ $this->widget('bootstrap.widgets.BsGridView', array(
     ),
     'columns' => array(
 		'id',
-		'siteId',
 		'catId',
-		'positions',
+		'userId',
 		'title',
 		'description',
-		/*
 		'content',
+		/*
 		'link',
-		'thumb',
-		'audio',
-		'video',
-		'editorId',
+		'imgUrl',
+		'audioUrl',
+		'videoUrl',
 		'status',
+		'viewCount',
+		'commentCount',
+		'vGood',
+		'vBad',
 		'createTime',
 		'updateTime',
 		*/
