@@ -20,6 +20,8 @@ return array(
         'application.components.*',
         'application.library.*',
         'application.modules.admin.models.*',
+        'application.modules.cms.models.*',
+        'application.modules.user.models.*',
         'bootstrap.behaviors.*',
         'bootstrap.helpers.*',
         'bootstrap.widgets.*',

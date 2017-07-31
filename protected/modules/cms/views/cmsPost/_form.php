@@ -19,13 +19,13 @@
     <?php echo $form->errorSummary($model); ?>
     
             
-    <?php echo $form->dropDownListControlGroup($model,'catId', CHtml::listData($this->getAllCategorys(), 'id', 'name')); ?>
+    <?php echo $form->dropDownListControlGroup($model,'catId', CHtml::listData(CmsCategory::getAllCategorys(), 'id', 'name')); ?>
     <?php echo $form->textFieldControlGroup($model,'title'); ?>
     <?php echo $form->textAreaControlGroup($model,'description',array('rows'=>3)); ?>
 
     <!-- 富文本编辑器 -->
     <div class="form-group">
-        <label class="control-label col-lg-2" for="ClubProductInfo_article">文章</label>
+        <label class="control-label col-lg-2" for="CmsPost_content">文章</label>
         <div class="col-lg-9">
             <div style="z-index:1000;">
                 <?php

@@ -22,6 +22,7 @@ $this->menu = array(
 
 
 <?php
+$categgorys = CmsCategory::getAllCategorys();
 $this->widget('bootstrap.widgets.BsDetailView', array(
     'htmlOptions' => array(
         'class' => 'table table-striped table-bordered table-condensed table-hover',
@@ -31,7 +32,7 @@ $this->widget('bootstrap.widgets.BsDetailView', array(
 		'id',
 		array(
             'name' => '分类',
-            //'value' => Common::statusSelected($model->catId, CHtml::listData($this->getAllCategorys(), 'id', 'name'))
+            'value' => Common::statusSelected($model->catId, $categgorys, array('key' => 'id', 'value' => 'name'))
         ),
 		'userId',
 		'title',

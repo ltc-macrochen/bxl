@@ -72,23 +72,26 @@
                         </div>
                         <div class="navbar-collapse collapse" id="navbar">
                             <ul class="nav navbar-nav">
+                                <?php
+                                    $hotOn = '';
+                                    $newOn = '';
+                                    $qtOn = '';
+                                    $dzOn = '';
+                                ?>
                                 <li class="active">
-                                    <a aria-expanded="false" role="button" href="/">首页</a>
+                                    <a aria-expanded="false" role="button" href="<?php echo CHtml::normalizeUrl('/');?>">首页</a>
                                 </li>
                                 <li class="">
-                                    <a aria-expanded="false" role="button" href="#" >热门</a>
+                                    <a aria-expanded="false" role="button" href="<?php echo CHtml::normalizeUrl('/?order=hot');?>" >热门</a>
                                 </li>
                                 <li class="">
-                                    <a aria-expanded="false" role="button" href="#" >新鲜</a>
+                                    <a aria-expanded="false" role="button" href="<?php echo CHtml::normalizeUrl('/?order=new');?>" >新鲜</a>
                                 </li>
                                 <li class="">
-                                    <a aria-expanded="false" role="button" href="#" >神回复</a>
+                                    <a aria-expanded="false" role="button" href="<?php echo CHtml::normalizeUrl('/?catId=1');?>" >趣图</a>
                                 </li>
                                 <li class="">
-                                    <a aria-expanded="false" role="button" href="#" >趣图</a>
-                                </li>
-                                <li class="">
-                                    <a aria-expanded="false" role="button" href="#" >段子</a><!--<i class="fa fa-angle-right"></i>-->
+                                    <a aria-expanded="false" role="button" href="<?php echo CHtml::normalizeUrl('/?catId=2');?>" >段子</a><!--<i class="fa fa-angle-right"></i>-->
                                 </li>
                                 <!-- demo
                                 <li class="dropdown">
@@ -130,10 +133,10 @@
             <?php echo $content; ?>
             <div class="footer">
                 <div class="pull-right">
-                    By：<a href="javascript:if(confirm('http://www.zi-han.net/  \n\nτݾҢδӀ Teleport Pro ȡܘìӲΪ ̼քԲܲ·޶Ӭڽߪʼθַאʨ׃ք׶Χc  \n\nţҪՓؾϱǷʏղߪ̼ðÿ'))window.location='http://www.zi-han.net/'" tppabs="http://www.zi-han.net/" target="_blank">zihan's blog</a>
+                    By：<a href="javascript:;" >爆笑驴</a>
                 </div>
                 <div>
-                    <strong>Copyright</strong> H+ &copy; 2014
+                    <strong>Copyright</strong> baoxiaolv.cn &copy; <?php echo date('Y')?>
                 </div>
             </div>
 

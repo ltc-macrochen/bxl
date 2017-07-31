@@ -161,13 +161,4 @@ class CmsPostController extends Controller {
             Yii::app()->end();
         }
     }
-
-    /**
-     * 获取所有分类
-     * @return array|mixed|null
-     */
-    public function getAllCategorys(){
-        $ret = CmsCategory::getAllCategorys();
-        return $ret;
-    }
 }

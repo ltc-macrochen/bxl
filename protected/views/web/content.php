@@ -19,32 +19,48 @@
                                 所有销售： 162,862
                             </span>
                             <div class="bxl-user">
-                                <a href="/web/user" target="_blank">
-                                    <img class="bxl-head" src="/web/images/head-default.jpg" alt="">
-                                    <span class="bxl-nick">一头驴子</span>
+                                <?php
+                                if(!$post->userId){
+                                    $userHome = '/';
+                                    $userHead = "/web/images/head-".rand(1, 19).".jpg";
+                                    $userNick = "驴传说";
+                                }else{
+                                    $userHome = '/web/user/id/' . $post->userId;
+                                    $userHead = $post->user->head;
+                                    $userNick = $post->user->nick;
+                                }
+                                ?>
+                                <a href="<?php echo $userHome;?>" target="_blank">
+                                    <img class="bxl-head" src="<?php echo $userHead;?>" alt="<?php echo $userNick;?>">
+                                    <span class="bxl-nick"><?php echo $userNick;?></span>
                                 </a>
                             </div>
                         </div>
 
                         <div class="m-t-sm">
-                            <a class="bxl-article" href="/web/content">
+                            <a class="bxl-article" href="<?php echo $this->createUrl('/web/content/id/' . $post->id);?>">
                                 <h2 class="bxl-title">
-                                    lalal
+                                    <?php echo $post->title;?>
                                 </h2>
                                 <div class="bxl-content">
-                                    <span>爆笑驴爆笑驴，啦啦啦啦啦</span>
+                                    <span><?php echo $post->content;?></span>
                                 </div>
-                                <div class="bxl-thumb text-center">
-                                    <img src="/web/images/head-default.jpg" alt="">
-                                </div>
+                                <?php if(!empty($post->imgUrl)):?>
+                                    <div class="bxl-thumb text-center" id="image_kill_referrer_<?php echo $post->id;?>">
+                                        <!--<img src="" alt="图片图片">-->
+                                        <script>
+                                            document.getElementById('image_kill_referrer_<?php echo $post->id;?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $post->imgUrl;?>');
+                                        </script>
+                                    </div>
+                                <?php endif;?>
                             </a>
                             <div class="row text-center bxl-btn-view">
                                 <div class="col-md-8 col-md-offset-2">
                                     <div class="pull-left btn-group" role="group">
-                                        <a href="" class="btn btn-link"><i class="fa fa-hand-o-left"></i> 上一条</a>
+                                        <a href="<?php echo ($post->id != 1) ? $this->createUrl('/web/content/id/' . (intval($post->id) - 1)) : 'javascript:alert(\'已经是第一条了~\');';?>" class="btn btn-link"><i class="fa fa-hand-o-left"></i> 上一条</a>
                                     </div>
                                     <div class="pull-right btn-group" role="group">
-                                        <a href="" class="btn btn-link">下一条 <i class="fa fa-hand-o-right"></i></a>
+                                        <a href="<?php echo $this->createUrl('/web/content/id/' . (intval($post->id) + 1));?>" class="btn btn-link">下一条 <i class="fa fa-hand-o-right"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -57,15 +73,15 @@
                                 2015.02.30更新
                             </div>
                             <div class="bxl-btn">
-                                <button type="button" class="btn btn-link bxl-good">
+                                <button type="button" class="btn btn-link bxl-good" onclick="doLike('<?php echo $post->id;?>', 'like', this);return false;">
                                     <i class="fa fa-thumbs-o-up"></i><!--fa-thumbs-up-->
-                                    <span>0</span>
+                                    <span><?php echo $post->vGood;?></span>
                                 </button>
-                                <button type="button" class="btn btn-link bxl-bad">
+                                <button type="button" class="btn btn-link bxl-bad" onclick="doLike('<?php echo $post->id;?>', 'unlike', this);return false;">
                                     <i class="fa fa-thumbs-o-down"></i><!--fa-thumbs-o-down-->
-                                    <span>0</span>
+                                    <span><?php echo $post->vBad;?></span>
                                 </button>
-                                <button type="button" class="btn btn-link bxl-comment">
+                                <button type="button" class="btn btn-link bxl-comment" onclick="location.href='#bxl-comment-area'">
                                     <i class="fa fa fa-comment-o"></i>
                                 </button>
                                 <button type="button" class="btn btn-link">
@@ -76,10 +92,10 @@
                                 <!-- JiaThis Button BEGIN -->
                                 <script type="text/javascript" >
                                     var jiathis_config={
-                                        url:"http://www.baoxiaolv.cn",
-                                        title:"爆笑驴-做人最重要的是开心！",
-                                        summary:"爆笑驴::爆笑笑话_糗事笑话_爆笑GIF_内涵段子_冷笑话_专注幽默搞笑网站！",
-                                        pic:"/web/images/head_default.jpg",
+                                        url:"<?php echo $this->createUrl('/web/content/id/' . $post->id);?>",
+                                        title:"<?php echo $post->title;?>",
+                                        summary:"<?php echo $post->content;?>",
+                                        pic:"<?php echo empty($post->imgUrl) ? '/web/images/head-deafult.jpg' : $post->imgUrl;?>",
                                         shortUrl:false,
                                         hideMore:false
                                     }
@@ -99,22 +115,22 @@
                     </div>
                     <div class="ibox-content text-center bxl-recommend">
                         <div class="row">
-                            <div class="col-xs-3 col-md-3">
+                            <a class="col-xs-3 col-md-3">
                                 <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
                                 <p>扫描二维码 关注爆笑驴微信</p>
-                            </div>
-                            <div class="col-xs-3 col-md-3">
+                            </a>
+                            <a class="col-xs-3 col-md-3">
                                 <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
                                 <p>扫描二维码 关注爆笑驴微信</p>
-                            </div>
-                            <div class="col-xs-3 col-md-3">
+                            </a>
+                            <a class="col-xs-3 col-md-3">
                                 <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
                                 <p>扫描二维码 关注爆笑驴微信</p>
-                            </div>
-                            <div class="col-xs-3 col-md-3">
+                            </a>
+                            <a class="col-xs-3 col-md-3">
                                 <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
                                 <p>扫描二维码 关注爆笑驴微信</p>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -126,46 +142,46 @@
                     </div>
                     <div class="ibox-content text-center bxl-recommend">
                         <div class="row">
-                            <div class="col-xs-3 col-md-3">
+                            <a class="col-xs-3 col-md-3">
                                 <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
                                 <p>扫描二维码 关注爆笑驴微信</p>
-                            </div>
-                            <div class="col-xs-3 col-md-3">
+                            </a>
+                            <a class="col-xs-3 col-md-3">
                                 <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
                                 <p>扫描二维码 关注爆笑驴微信</p>
-                            </div>
-                            <div class="col-xs-3 col-md-3">
+                            </a>
+                            <a class="col-xs-3 col-md-3">
                                 <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
                                 <p>扫描二维码 关注爆笑驴微信</p>
-                            </div>
-                            <div class="col-xs-3 col-md-3">
+                            </a>
+                            <a class="col-xs-3 col-md-3">
                                 <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
                                 <p>扫描二维码 关注爆笑驴微信</p>
-                            </div>
-                            <div class="col-xs-3 col-md-3">
+                            </a>
+                            <a class="col-xs-3 col-md-3">
                                 <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
                                 <p>扫描二维码 关注爆笑驴微信</p>
-                            </div>
-                            <div class="col-xs-3 col-md-3">
+                            </a>
+                            <a class="col-xs-3 col-md-3">
                                 <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
                                 <p>扫描二维码 关注爆笑驴微信</p>
-                            </div>
-                            <div class="col-xs-3 col-md-3">
+                            </a>
+                            <a class="col-xs-3 col-md-3">
                                 <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
                                 <p>扫描二维码 关注爆笑驴微信</p>
-                            </div>
-                            <div class="col-xs-3 col-md-3">
+                            </a>
+                            <a class="col-xs-3 col-md-3">
                                 <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
                                 <p>扫描二维码 关注爆笑驴微信</p>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
 
                 <!--评论-->
-                <div class="ibox float-e-margins bxl-comment">
+                <div class="ibox float-e-margins bxl-comment" id="bxl-comment-area">
                     <div class="ibox-title">
-                        爆笑评论（<i class="text-danger">3 </i>条评论）
+                        爆笑评论（<i class="text-danger"><?php echo $post->commentCount;?> </i>条评论）
                     </div>
                     <div class="ibox-content bxl-recommend">
                         <textarea class="form-control" title="说点什么吧，期待您的神回复！" rows="5" placeholder="说点什么吧，期待您的神回复！"></textarea>

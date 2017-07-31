@@ -44,6 +44,7 @@ class CmsPost extends CActiveRecord
 			array('status', 'numerical', 'integerOnly'=>true),
 			array('catId, userId, viewCount, commentCount, vGood, vBad', 'length', 'max'=>10),
 			array('title, description, link, imgUrl, audioUrl, videoUrl', 'length', 'max'=>255),
+            array('description, content, createTime, updateTime, sortTime, imgUrl', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, catId, userId, title, description, content, link, imgUrl, audioUrl, videoUrl, status, viewCount, commentCount, vGood, vBad, createTime, updateTime', 'safe', 'on'=>'search'),
@@ -58,6 +59,7 @@ class CmsPost extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+		    'user' => array(self::BELONGS_TO, 'User', 'userId')
 		);
 	}
 
@@ -115,7 +117,7 @@ class CmsPost extends CActiveRecord
 		$criteria->compare('imgUrl',$this->imgUrl,true);
 		$criteria->compare('audioUrl',$this->audioUrl,true);
 		$criteria->compare('videoUrl',$this->videoUrl,true);
-		$criteria->compare('status',$this->status);
+		$criteria->compare('status',Common::statusSearched($this->status, Constant::$_STATUS_LIST_SHOW), true);
 		$criteria->compare('viewCount',$this->viewCount,true);
 		$criteria->compare('commentCount',$this->commentCount,true);
 		$criteria->compare('vGood',$this->vGood,true);

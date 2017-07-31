@@ -24,11 +24,21 @@ class Common {
         return $array[$index]; 
         
     }
-    
-    public static function statusSelected($status, $statusList, $keyValue = array()) {
+
+    /**
+     * 显示已选中某个key的值
+     * @param $status   要判断的字段
+     * @param $statusList   要判断的列表数组
+     * @param array $keyValue   自定义健值对，可以是数据库结果里的任意两个字段，如id , title (array('key' => 'id', 'value' => 'title'))
+     * @return string
+     */
+    public static function statusSelected($status, $statusList, $keyValue = array('key' => 'value', 'value' => 'show')) {
+        $selectedKey = isset($keyValue['key']) ? $keyValue['key'] : 'value';
+        $selectedShow = isset($keyValue['value']) ? $keyValue['value'] : 'show';
+
         foreach ($statusList as $item) {
-            if ($item["value"] == $status) {
-                return $item["show"];
+            if ($item[$selectedKey] == $status) {
+                return $item[$selectedShow];
             }
         }
 
@@ -39,14 +49,17 @@ class Common {
         return $status.'积分';
     }
     
-    public static function statusSearched($statusName, $statusList) {
+    public static function statusSearched($statusName, $statusList, $keyValue = array('key' => 'value', 'value' => 'show')) {
         if ($statusName == null) {
             return null;
         }
-        
+
+        $searchKey = isset($keyValue['key']) ? $keyValue['key'] : 'value';
+        $searchShow = isset($keyValue['value']) ? $keyValue['value'] : 'show';
+
         foreach ($statusList as $item) {
-            if ($item["show"] == $statusName) {
-                return $item["value"];
+            if ($item[$searchShow] == $statusName) {
+                return $item[$searchKey];
             }
         }
 

@@ -8,7 +8,7 @@
 ?>
 
 <!--side right-->
-<div class="col-lg-4">
+<div class="col-lg-4 bxl-side-right">
     <div class="ibox float-e-margins bxl-ibox-right">
         <div class="ibox-content text-center bxl-tougao">
             <a href=""><i class="fa fa-edit"></i> 发帖</a>
@@ -35,18 +35,18 @@
         </div>
         <div class="ibox-content text-center bxl-recommend">
             <div class="row">
-                <div class="col-xs-6 col-md-6">
+                <a class="col-xs-6 col-md-6">
                     <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
                     <p>扫描二维码 关注爆笑驴微信</p>
-                </div>
-                <div class="col-xs-6 col-md-6">
+                </a>
+                <a class="col-xs-6 col-md-6">
                     <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
                     <p>扫描二维码 关注爆笑驴微信</p>
-                </div>
-                <div class="col-xs-6 col-md-6">
+                </a>
+                <a class="col-xs-6 col-md-6">
                     <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
                     <p>扫描二维码 关注爆笑驴微信</p>
-                </div>
+                </a>
             </div>
         </div>
     </div>

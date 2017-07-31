@@ -22,6 +22,7 @@ $this->menu = array(
 $this->widget('bootstrap.widgets.BsGridView', array(
     'id' => 'cms-post-grid',
     'dataProvider' => $dataProvider,
+    //'categorys' => $categorys,
     'template' => '{pager}{summary}{items}{pager}',
     'summaryText' => '第 {start}-{end} 条,&nbsp;&nbsp;共 {count} 条.',
     'emptyText' => '无记录',
@@ -35,7 +36,10 @@ $this->widget('bootstrap.widgets.BsGridView', array(
     ),
     'columns'=>array(
         'id',
-		'catId',
+		array(
+		    'header' => '分类',
+            'value' => 'Common::statusSelected($data->catId, CmsCategory::getAllCategorys(), array(\'key\' => \'id\', \'value\' => \'name\'))'
+        ),
 		'userId',
 		'title',
 		'description',

@@ -114,7 +114,20 @@ class CmsCategory extends CActiveRecord
      * @return array|mixed|null
      */
 	public static function getAllCategorys(){
+	    $cache = Yii::app()->cache;
+	    if($cache){
+	        $cacheKey = MCCacheKeyManager::buildCacheKey(MCCacheKeyManager::CK_GET_ALL_CATEGORY);
+	        $categorys = $cache->get($cacheKey);
+	        if($categorys !== false){
+	            return $categorys;
+            }
+        }
+
 	    $ret = self::model()->findAllByAttributes(array('status' => Constant::STATUS_SHOW));
+	    if(!empty($ret) && $cache){
+	        $cache->set($cacheKey, $ret, Constant::CACHE_TIME_LONG);
+        }
+
 	    return $ret;
     }
 }

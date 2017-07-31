@@ -50,11 +50,26 @@ $this->widget('bootstrap.widgets.BsGridView', array(
     ),
     'columns' => array(
 		'id',
-		'catId',
+        array(
+            'header' => '状态',
+            'value' => 'Common::statusSelected($data->catId, CmsCategory::getAllCategorys(), array(\'key\' => \'id\', \'value\' => \'name\'))',
+            'filter'=>BsHtml::activeTextField($model,'catId',array("placeHolder"=>"")),
+            'htmlOptions' => array("style"=>"width:6em;"),
+        ),
 		'userId',
 		'title',
-		'description',
+//		'description',
 		'content',
+        array(
+            'header' => '状态',
+            'value' => 'Common::statusSelected($data->status, Constant::$_STATUS_LIST_SHOW)',
+            'filter'=>BsHtml::activeTextField($model,'status',array("placeHolder"=>"")),
+            'htmlOptions' => array("style"=>"width:6em;"),
+        ),
+        'viewCount',
+        'commentCount',
+        'vGood',
+        'vBad',
 		/*
 		'link',
 		'imgUrl',
@@ -69,6 +84,7 @@ $this->widget('bootstrap.widgets.BsGridView', array(
 		'updateTime',
 		*/
         array(
+            'header' => '#',
             'class' => 'BsButtonColumn',
             'template' => '{view} {update} {delete}',
             'viewButtonLabel' => "查看",
