@@ -23,38 +23,30 @@
                                     所有销售： 162,862
                                 </span>
                                 <div class="bxl-user">
-                                    <?php
-                                        if(!$item->userId){
-                                            $userHome = '/';
-                                            $userHead = "/web/images/head-".rand(1, 19).".jpg";
-                                            $userNick = "驴传说";
-                                        }else{
-                                            $userHome = '/web/user/id/' . $item->userId;
-                                            $userHead = $item->user->head;
-                                            $userNick = $item->user->nick;
-                                        }
-                                    ?>
-                                    <a href="<?php echo $userHome;?>" target="_blank">
-                                        <img class="bxl-head" src="<?php echo $userHead;?>" alt="<?php echo $userNick;?>">
-                                        <span class="bxl-nick"><?php echo $userNick;?></span>
+                                    <a href="<?php echo $item['userDetailUrl'];?>" target="_blank">
+                                        <img class="bxl-head" src="<?php echo $item['userHead'];?>" alt="<?php echo $item['userNick'];?>">
+                                        <span class="bxl-nick"><?php echo $item['userNick'];?></span>
                                     </a>
                                 </div>
                             </div>
 
                             <div class="m-t-sm">
-                                <a class="bxl-article" href="<?php echo $this->createUrl('/web/content/id/' . $item->id);?>">
+                                <a class="bxl-article" href="<?php echo $item['contentDetailUrl'];?>">
                                     <h2 class="bxl-title">
-                                        <?php echo $item->title;?>
+                                        <?php echo $item['title'];?>
                                     </h2>
                                     <div class="bxl-content">
-                                        <span><?php echo $item->content;?></span>
+                                        <span><?php echo $item['content'];?></span>
                                     </div>
-                                    <?php if(!empty($item->imgUrl)):?>
-                                        <div class="bxl-thumb text-center" id="image_kill_referrer_<?php echo $item->id;?>">
-                                            <!--<img src="" alt="图片图片">-->
-                                            <script>
-                                                document.getElementById('image_kill_referrer_<?php echo $item->id;?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $item->imgUrl;?>');
-                                            </script>
+                                    <?php if(!empty($item['imgUrl'])):?>
+                                        <div class="bxl-thumb text-center" id="image_kill_referrer_<?php echo $item['id'];?>">
+                                            <?php if($item['killrefer'] == 'true'):?>
+                                                <script>
+                                                    document.getElementById('image_kill_referrer_<?php echo $item['id'];?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $item['imgUrl'];?>');
+                                                </script>
+                                            <?php else:?>
+                                                <img src="<?php echo $item['imgUrl'];?>" alt="<?php echo $item['title'];?>">
+                                            <?php endif;?>
                                         </div>
                                     <?php endif;?>
                                 </a>
@@ -67,15 +59,15 @@
                                     2015.02.30更新
                                 </div>
                                 <div class="bxl-btn">
-                                    <button type="button" class="btn btn-link bxl-good" onclick="doLike('<?php echo $item->id;?>', 'like', this);return false;">
+                                    <button type="button" class="btn btn-link bxl-good" onclick="doLike('<?php echo $item['id'];?>', 'like', this);return false;">
                                         <i class="fa fa-thumbs-o-up"></i><!--fa-thumbs-up-->
-                                        <span><?php echo $item->vGood;?></span>
+                                        <span><?php echo $item['vGood'];?></span>
                                     </button>
-                                    <button type="button" class="btn btn-link bxl-bad" onclick="doLike('<?php echo $item->id;?>', 'unlike', this);return false;">
+                                    <button type="button" class="btn btn-link bxl-bad" onclick="doLike('<?php echo $item['id'];?>', 'unlike', this);return false;">
                                         <i class="fa fa-thumbs-o-down"></i><!--fa-thumbs-o-down-->
-                                        <span><?php echo $item->vBad;?></span>
+                                        <span><?php echo $item['vBad'];?></span>
                                     </button>
-                                    <button type="button" class="btn btn-link bxl-comment" onclick="window.location.href='<?php echo $this->createUrl('/web/content/id/' . $item->id);?>'">
+                                    <button type="button" class="btn btn-link bxl-comment" onclick="window.location.href='<?php echo $item['contentDetailUrl'];?>'">
                                         <i class="fa fa fa-comment-o"></i>
                                     </button>
                                     <button type="button" class="btn btn-link">

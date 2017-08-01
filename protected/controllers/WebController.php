@@ -11,11 +11,21 @@ class WebController extends Controller {
 
     public function actionIndex(){
         $order = Yii::app()->request->getQuery('order');
-        if($order == 'hot'){
+        if($order == CmsPost::POST_ORDER_HOT){
             $defaultOrder = 'viewCount desc';
         } else {
-            $order = 'new';
+            $order = CmsPost::POST_ORDER_NEW;
             $defaultOrder = 'id desc';
+        }
+
+        //分类
+        $catId = Yii::app()->request->getQuery('catId');
+        $condition = '1';
+        if(!empty($catId) && is_numeric($catId)){
+            $condition = "catId = {$catId}";
+            if(!in_array($catId, array(CmsPost::POST_CATEGORY_PIC, CmsPost::POST_CATEGORY_CONTENT))){
+                $this->redirect('/');
+            }
         }
 
         $page = Yii::app()->request->getQuery('page');
@@ -37,11 +47,13 @@ class WebController extends Controller {
             $criteria = new CDbCriteria();
             $criteria->order = $defaultOrder;
             $criteria->addCondition("status=" . Constant::STATUS_SHOW);      //根据条件查询
+            $criteria->addCondition($condition);
             $count = CmsPost::model()->count($criteria);
             $pager = new CPagination($count);
             $pager->pageSize=20;
             $pager->applyLimit($criteria);
-            $postdata = CmsPost::model()->findAll($criteria);
+            $postRet = CmsPost::model()->findAll($criteria);
+            $postdata = CmsPost::formatPostData($postRet);
 
             $cacheData = array(
                 'pager' => $pager,
@@ -56,7 +68,8 @@ class WebController extends Controller {
             array(
                 'pages'=>$cacheData['pager'],
                 'postdata'=>$cacheData['postdata'],
-                'order' => $order
+                'order' => $order,
+                'top4' => CmsPost::getRandomList(CmsPost::POST_CATEGORY_PIC, 4, Constant::CACHE_TIME_SHORT)
             )
         );
     }
@@ -70,14 +83,21 @@ class WebController extends Controller {
             $this->redirect('/');
         }
 
-        $post = CmsPost::model()->findByPk($id);
-        if(empty($post) || $post->status != Constant::STATUS_SHOW){
+        $post = CmsPost::model()->findAllByAttributes(array('id' => $id));
+        if(empty($post) || $post[0]['status'] != Constant::STATUS_SHOW){
             $this->redirect('/');
         }
+        $post[0]['viewCount'] += 1;
+        $post[0]->save();
+
+        $postData = CmsPost::formatPostData($post);
 
         $this->render('content',
             array(
-                'post' => $post
+                'post' => $postData,
+                'guess4' => CmsPost::getRandomList(),
+                'top6' => CmsPost::getArticleList(),
+                'top4' => CmsPost::getRandomList(CmsPost::POST_CATEGORY_PIC, 4, Constant::CACHE_TIME_SHORT)
             )
         );
     }
@@ -124,5 +144,12 @@ class WebController extends Controller {
 
         echo CJSON::encode(array('err' => 0, 'msg' => 'success'));
         return;
+    }
+
+    /**
+     *
+     */
+    public function actionNewAdd(){
+        $this->render('newAdd');
     }
 }

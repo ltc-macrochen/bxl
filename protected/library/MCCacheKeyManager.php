@@ -14,6 +14,8 @@ class MCCacheKeyManager {
     //缓存key
     const CK_GET_ALL_CATEGORY = 'get_all_category'; //获取所有分类
     const CK_GET_POST_LIST = 'get_post_list';   //获取文章列表
+    const CK_GET_RANDOM_LIST = 'get_random_list';   //随机获取文章列表
+    const CK_GET_TOP_LIST = 'get_top_list'; //获取top排行文章列表
 
     /**
      * 构建缓存key

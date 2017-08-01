@@ -37,3 +37,9 @@ h1,h2,h3,h4,h5,a,span{color:#676a6c;}
 .bxl-comment .ibox-content{border-style: none;padding-top:0;margin-bottom: 50px;}
 .bxl-comment .comment-input-action{background-color: #eee;}
 .bxl-comment .bxl-comment-limit{height: 32px;line-height: 32px;margin-right: 10px;}
+.bxl-comment .comment-input-action span{font-size: 12px;}
+
+.bxl-newadd-notice .ibox-content li{line-height: 24px;}
+.bxl-newadd .newadd-input-action{background-color: #eee;line-height: 33px;}
+.bxl-newadd .newadd-input-action span{font-size: 12px;}
+.bxl-newadd .bxl-newadd-limit{height: 32px;line-height: 32px;margin-right: 10px;}

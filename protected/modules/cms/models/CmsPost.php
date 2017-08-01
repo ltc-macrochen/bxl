@@ -140,4 +140,111 @@ class CmsPost extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	const POST_CATEGORY_PIC     = '1';  //图片分类
+	const POST_CATEGORY_CONTENT = '2';  //段子分类
+
+    const POST_ORDER_HOT = 'hot';   //热门排序
+    const POST_ORDER_NEW = 'new';   //新鲜排序
+
+    /**
+     * 随机获取列表
+     * @param string $type
+     * @param int $count
+     * @return array
+     */
+	public static function getRandomList($type = self::POST_CATEGORY_PIC, $count = 4, $cacheTime = Constant::CACHE_TIME_VARY_SHORT){
+        $order = 'rand()';
+        $data = self::getArticleList($order, $type, $count, $cacheTime);
+
+        return $data;
+    }
+
+    /**
+     * 获取文章列表
+     * @param string $order
+     * @param string $type
+     * @param int $count
+     * @return array
+     */
+    public static function getArticleList($order = 'viewCount desc', $type = self::POST_CATEGORY_PIC, $count = 6, $cacheTime = Constant::CACHE_TIME_LONG){
+        $cache = Yii::app()->cache;
+        if($cache){
+            $extStr = "_{$type}_{$order}";
+            $cacheKey = MCCacheKeyManager::buildCacheKey(MCCacheKeyManager::CK_GET_TOP_LIST . $extStr);
+            $data = $cache->get($cacheKey);
+            if($data === false){
+                $condition = "catId = {$type} and status = " . Constant::STATUS_SHOW;
+                $ret = self::model()->getListFromDb($condition, $order, $count);
+                $data = self::formatPostData($ret);
+
+                $cache->set($cacheKey, $data, $cacheTime);
+            }
+
+            return $data;
+        }
+
+        $condition = "catId = {$type} and status = " . Constant::STATUS_SHOW;
+        $ret = self::model()->getListFromDb($condition, $order, $count);
+        $data = self::formatPostData($ret);
+        return $data;
+    }
+
+    /**
+     * 根据条件从数据库拉取文章列表
+     * @param $condition    string
+     * @param $order    'viewCount desc' or 'rand()'
+     * @param $limit    int 20 or other
+     * @return CActiveRecord[]
+     */
+    protected function getListFromDb($condition, $order, $limit){
+        $criteria = new CDbCriteria();
+        $criteria->order = $order;
+        $criteria->limit = $limit;
+        $criteria->condition = $condition;
+        $ret = CmsPost::model()->findAll($criteria);
+        return $ret;
+    }
+
+    /**
+     * 文章数据格式化
+     * @param $ret
+     * @return array
+     */
+    public static function formatPostData($ret){
+        $data = array();
+        foreach ($ret as $item) {
+            $d = array(
+                'id' => $item->id,
+                'title' => $item->title,
+                'content' => $item->content,
+                'imgUrl' => $item->imgUrl,
+                'vGood' => $item->vGood,
+                'vBad' => $item->vBad,
+                'commentCount' => $item->commentCount,
+                'contentDetailUrl' => Yii::app()->createUrl('/web/content/id/' . $item->id)
+            );
+
+            //用户信息
+            if($item->userId == 0){
+                $d['userDetailUrl'] = Yii::app()->createUrl('/');
+                $d['userHead'] = "/web/images/head-".rand(1, 19).".jpg";
+                $d['userNick'] = "驴传说";
+            }else{
+                $d['userDetailUrl'] = Yii::app()->createUrl('/web/user/id/' . $item->userId);
+                $d['userHead'] = $item->user->head;
+                $d['userNick'] = $item->user->nick;
+            }
+
+            //是否需要消除防盗链
+            $d['killrefer'] = 'false';
+            if(strpos($d['imgUrl'], 'http://') !== false){
+                $d['killrefer'] = 'true';
+            }
+
+            $data[] = $d;
+        }
+
+        return $data;
+    }
 }

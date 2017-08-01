@@ -73,25 +73,23 @@
                         <div class="navbar-collapse collapse" id="navbar">
                             <ul class="nav navbar-nav">
                                 <?php
-                                    $hotOn = '';
-                                    $newOn = '';
-                                    $qtOn = '';
-                                    $dzOn = '';
+                                    $order = Yii::app()->request->getQuery('order');
+                                    $catId = Yii::app()->request->getQuery('catId');
                                 ?>
-                                <li class="active">
+                                <li class="<?php echo (empty($order) && empty($catId)) ? 'active' : '';?>">
                                     <a aria-expanded="false" role="button" href="<?php echo CHtml::normalizeUrl('/');?>">首页</a>
                                 </li>
-                                <li class="">
+                                <li class="<?php echo ($order == CmsPost::POST_ORDER_HOT) ? 'active' : '';?>">
                                     <a aria-expanded="false" role="button" href="<?php echo CHtml::normalizeUrl('/?order=hot');?>" >热门</a>
                                 </li>
-                                <li class="">
+                                <li class="<?php echo ($order == CmsPost::POST_ORDER_NEW) ? 'active' : '';?>">
                                     <a aria-expanded="false" role="button" href="<?php echo CHtml::normalizeUrl('/?order=new');?>" >新鲜</a>
                                 </li>
-                                <li class="">
+                                <li class="<?php echo ($catId == CmsPost::POST_CATEGORY_PIC) ? 'active' : '';?>">
                                     <a aria-expanded="false" role="button" href="<?php echo CHtml::normalizeUrl('/?catId=1');?>" >趣图</a>
                                 </li>
-                                <li class="">
-                                    <a aria-expanded="false" role="button" href="<?php echo CHtml::normalizeUrl('/?catId=2');?>" >段子</a><!--<i class="fa fa-angle-right"></i>-->
+                                <li class="<?php echo ($catId == CmsPost::POST_CATEGORY_CONTENT) ? 'active' : '';?>">
+                                    <a aria-expanded="false" role="button" href="<?php echo CHtml::normalizeUrl('/?catId=2');?>" >段子</a>
                                 </li>
                                 <!-- demo
                                 <li class="dropdown">

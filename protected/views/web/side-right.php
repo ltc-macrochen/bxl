@@ -11,11 +11,11 @@
 <div class="col-lg-4 bxl-side-right">
     <div class="ibox float-e-margins bxl-ibox-right">
         <div class="ibox-content text-center bxl-tougao">
-            <a href=""><i class="fa fa-edit"></i> 发帖</a>
+            <a href="<?php echo Yii::app()->createUrl('/web/newAdd');?>"><i class="fa fa-edit"></i> 发帖</a>
         </div>
     </div>
 
-    <div class="ibox float-e-margins bxl-ibox-right">
+    <div class="ibox float-e-margins bxl-ibox-right hidden-xs hidden-sm">
         <div class="ibox-content text-center bxl-qrcode">
             <img src="/web/images/bxl-wap.jpg" alt="扫描二维码 用手机看爆笑驴">
             <p>扫描二维码 用手机看爆笑驴</p>
@@ -29,24 +29,26 @@
         </div>
     </div>
 
-    <div class="ibox float-e-margins bxl-ibox-right">
+    <div class="ibox float-e-margins bxl-ibox-right hidden-xs hidden-sm">
         <div class="ibox-title">
             <h4>精彩推荐</h4>
         </div>
         <div class="ibox-content text-center bxl-recommend">
             <div class="row">
-                <a class="col-xs-6 col-md-6">
-                    <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
-                    <p>扫描二维码 关注爆笑驴微信</p>
-                </a>
-                <a class="col-xs-6 col-md-6">
-                    <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
-                    <p>扫描二维码 关注爆笑驴微信</p>
-                </a>
-                <a class="col-xs-6 col-md-6">
-                    <img src="/web/images/head-default.jpg" alt="扫描二维码 关注爆笑驴微信">
-                    <p>扫描二维码 关注爆笑驴微信</p>
-                </a>
+                <?php foreach ($top4 as $item):?>
+                    <a class="col-xs-3 col-md-3" href="<?php echo $item['contentDetailUrl'];?>">
+                        <div id="image_kill_referrer_<?php echo $item['id'];?>">
+                            <?php if($item['killrefer'] == 'true'):?>
+                                <script>
+                                    document.getElementById('image_kill_referrer_<?php echo $item['id'];?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $item['imgUrl'];?>');
+                                </script>
+                            <?php else:?>
+                            <img src="<?php echo $item['imgUrl'];?>" alt="<?php echo $item['title'];?>">
+                            <?php endif;?>
+                        </div>
+                        <p><?php echo $item['title']?></p>
+                    </a>
+                <?php endforeach;?>
             </div>
         </div>
     </div>
