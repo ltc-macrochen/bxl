@@ -51,12 +51,13 @@ $this->widget('bootstrap.widgets.BsGridView', array(
     'columns' => array(
 		'id',
         array(
-            'header' => '状态',
+            'header' => '分类',
             'value' => 'Common::statusSelected($data->catId, CmsCategory::getAllCategorys(), array(\'key\' => \'id\', \'value\' => \'name\'))',
             'filter'=>BsHtml::activeTextField($model,'catId',array("placeHolder"=>"")),
             'htmlOptions' => array("style"=>"width:6em;"),
         ),
 		'userId',
+		'srcId',
 		'title',
 //		'description',
 		'content',
@@ -76,6 +77,8 @@ $this->widget('bootstrap.widgets.BsGridView', array(
 		'audioUrl',
 		'videoUrl',
 		'status',
+		'reviewTimes',
+		'reviewGood',
 		'viewCount',
 		'commentCount',
 		'vGood',

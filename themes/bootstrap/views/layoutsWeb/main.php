@@ -24,10 +24,10 @@
     <meta name="robots" content="index, follow">
     <meta name="revisit-after" content="1 days">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta name="keywords" content="爆笑驴啦啦啦啦">
-    <meta name="description" content="爆笑驴啦啦啦啦">
+    <meta name="keywords" content="爆笑,幽默,搞笑,趣图,美女,笑话">
+    <meta name="description" content="爆笑驴提供爆笑笑话，糗事笑话，搞笑GIF，内涵段子，冷笑话等等，专注幽默搞笑！">
     <link rel="icon" type="image/vnd.microsoft.icon" href="/web/img/icon.ico">
-    <title><?php echo isset($title) ? $title : '爆笑驴::爆笑笑话_糗事笑话_爆笑GIF_内涵段子_冷笑话_专注幽默搞笑网站！';?></title>
+    <title><?php echo isset($this->title) ? $this->title : '爆笑驴::爆笑笑话_糗事笑话_爆笑GIF_内涵段子_冷笑话_专注幽默搞笑网站！';?></title>
 
     <!-- Bootstrap -->
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
@@ -90,6 +90,9 @@
                                 </li>
                                 <li class="<?php echo ($catId == CmsPost::POST_CATEGORY_CONTENT) ? 'active' : '';?>">
                                     <a aria-expanded="false" role="button" href="<?php echo CHtml::normalizeUrl('/?catId=2');?>" >段子</a>
+                                </li>
+                                <li class="<?php echo ($catId == 3) ? 'active' : '';?>">
+                                    <a aria-expanded="false" role="button" href="<?php echo CHtml::normalizeUrl('/web/review?catId=3');?>" >审稿</a>
                                 </li>
                                 <!-- demo
                                 <li class="dropdown">

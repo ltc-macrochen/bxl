@@ -35,6 +35,7 @@ $this->widget('bootstrap.widgets.BsDetailView', array(
             'value' => Common::statusSelected($model->catId, $categgorys, array('key' => 'id', 'value' => 'name'))
         ),
 		'userId',
+		'srcId',
 		'title',
 		'description',
 		'content',

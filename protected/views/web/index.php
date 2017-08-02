@@ -36,7 +36,7 @@
                                         <?php echo $item['title'];?>
                                     </h2>
                                     <div class="bxl-content">
-                                        <span><?php echo $item['content'];?></span>
+                                        <?php echo $item['content'];?>
                                     </div>
                                     <?php if(!empty($item['imgUrl'])):?>
                                         <div class="bxl-thumb text-center" id="image_kill_referrer_<?php echo $item['id'];?>">

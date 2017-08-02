@@ -1,2 +1,5 @@
 assets
 protected/runtime
+upload
+vdata-*.txt
+protected/data

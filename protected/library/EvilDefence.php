@@ -105,15 +105,28 @@ class EvilDefence {
             $interval = 3600;
         }
         $cacheKey = Yii::app()->request->hostInfo . "/" . implode("_", array(strval($action), strval($key), strval($extKey)));
-        $memcache = Yii::app()->cache->getMemCache();
-        $count = $memcache->get($cacheKey);
-        if ($count === false) {  //没有带到限制值
-            $memcache->set($cacheKey, 1, 0, $interval);
-            return false;
-        } else {  //达到限制值，不处理这个请求
-            $memcache->increment($cacheKey, 1);
+        $cacheClass = get_class(Yii::app()->cache);
+        if($cacheClass == 'CMemCache'){
+            $memcache = Yii::app()->cache->getMemCache();
+            $count = $memcache->get($cacheKey);
+            if ($count === false) {  //没有带到限制值
+                $memcache->set($cacheKey, 1, 0, $interval);
+                return false;
+            } else {  //达到限制值，不处理这个请求
+                $memcache->increment($cacheKey, 1);
+                return ($count < $limit) ? false : true;
+            }
+        }else if($cacheClass == 'CRedisCache'){
+            //Redis计数器
+            $redisConnect = Yii::app()->cache;
+            $count = $redisConnect->executeCommand('INCRBY',array($cacheKey,1));
+            $redisConnect->executeCommand('EXPIRE',array($cacheKey,$interval));
+            $ttl = $redisConnect->executeCommand('TTL',array($cacheKey));
             return ($count < $limit) ? false : true;
+        }else{
+            throw new CHttpException(404, "未配置MemCache或Redis！");
         }
+
     }
 
 }

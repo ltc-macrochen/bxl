@@ -25,6 +25,10 @@ class CmsPostController extends Controller {
      */
     public function accessRules() {
         return array(
+            array('allow', // allow all users to perform 'index' and 'view' actions
+                'actions' => array('index', 'view'),
+                'users' => array('*'),
+            ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
                 'actions' => array('index', 'view', 'create', 'update', 'admin', 'delete'),
                 'users' => array('@'),
@@ -57,7 +61,6 @@ class CmsPostController extends Controller {
 
         if (isset($_POST['CmsPost'])) {
             $model->attributes = $_POST['CmsPost'];
-            $model->createTime = date('Y-m-d H:i:s');
             if ($model->save()) {
                 $this->redirect(array('view', 'id' => $model->id));
             }
@@ -81,7 +84,6 @@ class CmsPostController extends Controller {
 
         if (isset($_POST['CmsPost'])) {
             $model->attributes = $_POST['CmsPost'];
-            $model->updateTime = date('Y-m-d H:i:s');
             if ($model->save()) {
                 $this->redirect(array('view', 'id' => $model->id));
             }
@@ -161,4 +163,5 @@ class CmsPostController extends Controller {
             Yii::app()->end();
         }
     }
+
 }

@@ -11,6 +11,7 @@ h1,h2,h3,h4,h5,a,span{color:#676a6c;}
 .bxl-side-right {margin-bottom: 50px;}
 .bxl-web-wraper{padding: 15px 0 !important;}
 .bxl-web-wraper .container{padding: 0;}
+.bxl-content, .bxl-content p{word-wrap:break-word;}
 .bxl-item{padding-bottom: 0;}
 .bxl-item .bxl-btn{border-top:1px solid #eee;}
 .bxl-item .bxl-btn button{font-size: 16px;width:66px;}
@@ -24,14 +25,20 @@ h1,h2,h3,h4,h5,a,span{color:#676a6c;}
 .bxl-qrcode img{margin-bottom: 10px;}
 .bxl-qrcode p{margin: 0;}
 .bxl-ibox-right .ibox-content{padding: 10px;}
-.bxl-recommend img{height: 126px;width: auto;}
+.bxl-recommend img{width: 126px;height: 95px;}
 .bxl-recommend p{width: auto;height:20px;margin:5px 5px 10px 5px;overflow:hidden;font-size: 14px;}
+
+.bxl-recommend ul li{width: 126px;height: 125px;padding-left: 15px;padding-top: 10px;float: left;}
+.bxl-recommend ul li a{display: block;width: 126px;height: 125px;}
+.bxl-recommend ul li img{width: 126px;height: 95px;}
+
 .bxl-recommend .col-md-6{padding: 5px 0 0 5px;}
 .bxl-tag a{padding: 0px 2px 2px 2px;font-size: 14px;}
 
-.bxl-btn-view{margin-top: 20px;}
+.bxl-btn-view, .bxl-btn-review{margin-top: 20px;}
 .bxl-btn-view a{color: #fff;background-color: #fcbf00;font-size: 22px;border-radius: 22px;}
 .bxl-btn-view .btn:hover{color: #1ab394;background-color: #fcbf00;}
+.bxl-btn-review .btn i{font-size: 18px;}
 
 .bxl-comment .ibox-title{height: 32px;line-height: 32px;font-size: 18px;padding: 7px 20px;}
 .bxl-comment .ibox-content{border-style: none;padding-top:0;margin-bottom: 50px;}
@@ -43,3 +50,4 @@ h1,h2,h3,h4,h5,a,span{color:#676a6c;}
 .bxl-newadd .newadd-input-action{background-color: #eee;line-height: 33px;}
 .bxl-newadd .newadd-input-action span{font-size: 12px;}
 .bxl-newadd .bxl-newadd-limit{height: 32px;line-height: 32px;margin-right: 10px;}
+.upload-pic .remove{display: block!important;font-size: 21px!important;padding-left: 2px;line-height: 24px;}

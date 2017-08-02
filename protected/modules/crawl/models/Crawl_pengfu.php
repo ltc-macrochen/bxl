@@ -105,13 +105,14 @@ class Crawl_pengfu extends Crawl {
             $info['title'] = pq($item)->find('dl dd h1 a')->text();
             $info['vGood'] = pq($item)->find('.action .ding em')->text();
             $info['vBad'] = pq($item)->find('.action .cai em')->text();
-            $info['tags'] = array();
+            $info['tags'] = '';
 
             $tagItem = pq($item)->find('.action .fr a');
+            $tagArr = array();
             foreach ($tagItem as $tag) {
-                $info['tags'][] = pq($tag)->text();
+                $tagArr[] = pq($tag)->text();
             }
-
+            $info['tags'] = implode('-', $tagArr);
 
             $line = implode('|', $info) . "\n";
             fwrite($file, $line);

@@ -5,20 +5,36 @@
  * Date: 2017/8/1
  * Time: 17:32
  */
+
+$cs = Yii::app()->clientScript;
+$themePath = Yii::app()->theme->baseUrl;
+$cs->registerScriptFile($themePath . '/js/plugins/plupload/plupload.full.min.js', CClientScript::POS_END);
+$cs->registerScriptFile('/web/js/common.js', CClientScript::POS_END);
 ?>
+
 <div class="wrapper wrapper-content bxl-web-wraper">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-lg-8">
                 <!--投稿-->
-                <div class="ibox float-e-margins bxl-newadd" id="bxl-newadd-area">
+                <div class="ibox bxl-newadd" id="bxl-newadd-area">
 
                     <div class="ibox-content bxl-newadd">
-                        <textarea class="form-control" title="说点什么吧，期待您的神回复！" rows="5" placeholder="说点什么吧，期待您的神回复！"></textarea>
+                        <textarea class="form-control" title="分享我的爆笑糗事笑话~" rows="5" placeholder="分享我的爆笑糗事笑话~" maxlength="300"></textarea>
                         <div class="newadd-input-action">
-                            <a class="btn-upload-pic">上传图片</a>
-                            <input type="submit" class="btn btn-danger pull-right" value="提交">
-                            <span class="pull-right bxl-newadd-limit">还可输入<span class="text-danger">300</span>字</span>
+                            <div class="input-group">
+                                <input name="uploadPic" class="form-control hidden" placeholder="图片地址" type="text">
+                                <span class="input-group-btn">
+                                    <button id="btn-upload-pic-imgUrl" class="btn-upload-pic btn btn-info" name="yt0" type="button" >
+                                        <i class="fa fa-upload"></i>
+                                        上传图片
+                                    </button>
+                                </span>
+
+                                <input type="submit" class="btn btn-danger pull-right" value="提交">
+                                <span class="pull-right bxl-newadd-limit">还可输入<span class="text-danger">300</span>字</span>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -42,3 +58,13 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#bxl-newadd-area textarea').on('keyup', function () {
+            var inputVal = $(this).val();
+            var inputLen = inputVal.length;
+            $('#bxl-newadd-area .bxl-newadd-limit span').text(300 - parseInt(inputLen));
+        })
+    })
+</script>

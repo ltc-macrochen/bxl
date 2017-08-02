@@ -34,6 +34,7 @@ class Constant
     const STATUS_SHOW = 0;      //展示  
     const STATUS_HIDE = 1;      //不展示
     const STATUS_DELETE = 2;    //删除
+    const STATUS_REJECT = 3;    //审核拒绝
 
     //（下拉菜单使用）
 
@@ -43,9 +44,10 @@ class Constant
             //array("value"=> self::STATUS_DELETE, "show" => "已删除"),
     );
     static $_STATUS_LIST_SHOW = array(
-        array("value" => self::STATUS_SHOW, "show" => "展示"),
-        array("value" => self::STATUS_HIDE, "show" => "不展示"),
-            //array("value"=> self::STATUS_DELETE, "show" => "已删除"),
+        array("value" => self::STATUS_SHOW, "show" => "审核通过"),
+        array("value" => self::STATUS_HIDE, "show" => "等待审核"),
+        array("value"=> self::STATUS_DELETE, "show" => "已删除"),
+        array("value"=> self::STATUS_REJECT, "show" => "审核拒绝"),
     );
     static $_STATUS_LIST_ENABLE = array(
         array("value" => self::STATUS_SHOW, "show" => "启用"),
@@ -64,4 +66,8 @@ class Constant
     const CACHE_TIME_VARY_LONG = 36000;  //10小时
     const PEEK_COUNT_MAX_SHOW = 10000; //最大偷听显示数量
 
+    const POST_DEFAULT_TITLE = '分享我的糗事笑话';
+
+    //计数ID
+    const COUNT_ID_SUBMITHAPPY = 1;
 }

@@ -41,7 +41,8 @@ return array(
         'admin',
         'service',
         'user',
-        'cms'
+        'cms',
+        'crawl'
     ),
 
     // application components

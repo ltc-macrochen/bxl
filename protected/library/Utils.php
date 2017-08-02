@@ -457,4 +457,151 @@ class Utils {
         }
     }
 
+    /**
+     * 截取字符串
+     *
+     * @param  string $str     the origin string
+     * @param  int    $lenth   the number n1%3 = 0 because utf
+     * @param  string $etc     the short tail
+     * @return string $str     the changed string
+     */
+    public static function getShortText($str, $lenth = 80, $etc = '...')
+    {
+        $start = 0;
+        $len = strlen ( $str );
+        $r = array ();
+        $n = 0;
+        $m = 0;
+        for($i = 0; $i < $len; $i ++)
+        {
+            $x = substr ( $str, $i, 1 );
+            $a = base_convert ( ord ( $x ), 10, 2 );
+            $a = substr ( '00000000' . $a, - 8 );
+            if ($n < $start)
+            {
+                if (substr ( $a, 0, 1 ) == 0)
+                {
+                }
+                elseif (substr ( $a, 0, 3 ) == 110)
+                {
+                    $i += 1;
+                }
+                elseif (substr ( $a, 0, 4 ) == 1110)
+                {
+                    $i += 2;
+                }
+                $n ++;
+            }
+            else
+            {
+                if (substr ( $a, 0, 1 ) == 0)
+                {
+                    $r [] = substr ( $str, $i, 1 );
+                }
+                elseif (substr ( $a, 0, 3 ) == 110)
+                {
+                    $r [] = substr ( $str, $i, 2 );
+                    $i += 1;
+                }
+                elseif (substr ( $a, 0, 4 ) == 1110)
+                {
+                    $r [] = substr ( $str, $i, 3 );
+                    $i += 2;
+                }
+                else
+                {
+                    $r [] = '';
+                }
+                if (++ $m >= $lenth)
+                {
+                    break;
+                }
+            }
+        }
+        $trunstr = join ( '', $r );
+        if (strlen ( $trunstr ) < $len){
+            return $trunstr . $etc;
+        }
+        else{
+            return $trunstr;
+        }
+    }
+
+    /**
+     * Get client ip address
+     *
+     * @return string $ip    the client ip address
+     */
+    public static function getClientIp()
+    {
+        if (isset ( $_SERVER ['HTTP_QVIA'] ))
+        {
+            $ip = qvia2ip ( $_SERVER ['HTTP_QVIA'] );
+            if ($ip)
+            {
+                return $ip;
+            }
+        }
+
+        if (isset ( $_SERVER ['HTTP_CLIENT_IP'] ) and ! empty ( $_SERVER ['HTTP_CLIENT_IP'] ))
+        {
+            return self::filterIp ( $_SERVER ['HTTP_CLIENT_IP'] );
+        }
+        if (isset ( $_SERVER ['HTTP_X_FORWARDED_FOR'] ) and ! empty ( $_SERVER ['HTTP_X_FORWARDED_FOR'] ))
+        {
+            $ip = strtok ( $_SERVER ['HTTP_X_FORWARDED_FOR'], ',' );
+            do
+            {
+                $ip = ip2long ( $ip );
+
+                //-------------------
+                // skip private ip ranges
+                //-------------------
+                // 10.0.0.0 - 10.255.255.255
+                // 172.16.0.0 - 172.31.255.255
+                // 192.168.0.0 - 192.168.255.255
+                // 127.0.0.1, 255.255.255.255, 0.0.0.0
+                //-------------------
+                if (! (($ip == 0) or ($ip == 0xFFFFFFFF) or ($ip == 0x7F000001) or (($ip >= 0x0A000000) and ($ip <= 0x0AFFFFFF)) or
+                    (($ip >= 0xC0A8FFFF) and ($ip <= 0xC0A80000)) or (($ip >= 0xAC1FFFFF) and ($ip <= 0xAC100000))))
+                {
+                    return long2ip ( $ip );
+                }
+            }
+            while ( $ip = strtok ( ',' ) );
+        }
+        if (isset ( $_SERVER ['HTTP_PROXY_USER'] ) and ! empty ( $_SERVER ['HTTP_PROXY_USER'] ))
+        {
+            return self::filterIp ( $_SERVER ['HTTP_PROXY_USER'] );
+        }
+        if (isset ( $_SERVER ['REMOTE_ADDR'] ) and ! empty ( $_SERVER ['REMOTE_ADDR'] ))
+        {
+            return self::filterIp ( $_SERVER ['REMOTE_ADDR'] );
+        }
+        else
+        {
+            return "0.0.0.0";
+        }
+    }
+
+    /**
+     * Filter the ip string
+     *
+     * @param  string $key          the ip string
+     * @return boolean              whether the ip is correct
+     */
+    public static function filterIp($key)
+    {
+        $key = preg_replace("/[^0-9.]/", "", $key);
+        return preg_match("/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/", $key) ? $key : "0.0.0.0";
+    }
+
+    /**
+     * 删除字符串所有空格
+     * @param $str
+     * @return mixed
+     */
+    static public function trimStr($str){
+        return preg_replace('/\s/', '', $str);
+    }
 }

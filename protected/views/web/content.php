@@ -108,7 +108,7 @@
                     <div class="ibox-content text-center bxl-recommend">
                         <div class="row">
                             <?php foreach ($guess4 as $item):?>
-                                <a class="col-xs-3 col-md-3" href="<?php echo $item['contentDetailUrl'];?>">
+                                <a class="col-xs-6 col-sm-3 col-md-3 col-lg-3" href="<?php echo $item['contentDetailUrl'];?>">
                                     <div id="image_kill_referrer_<?php echo $item['id'];?>">
                                         <?php if($item['killrefer'] == 'true'):?>
                                             <script>
@@ -133,7 +133,7 @@
                     <div class="ibox-content text-center bxl-recommend">
                         <div class="row">
                             <?php foreach ($top6 as $item):?>
-                                <a class="col-xs-3 col-md-3" href="<?php echo $item['contentDetailUrl'];?>">
+                                <a class="col-xs-6 col-sm-3 col-md-3 col-lg-3" href="<?php echo $item['contentDetailUrl'];?>">
                                     <div id="image_kill_referrer_<?php echo $item['id'];?>">
                                         <?php if($item['killrefer'] == 'true'):?>
                                             <script>

@@ -7,6 +7,7 @@
  * @property string $id
  * @property string $catId
  * @property string $userId
+ * @property string $srcId
  * @property string $title
  * @property string $description
  * @property string $content
@@ -15,6 +16,8 @@
  * @property string $audioUrl
  * @property string $videoUrl
  * @property integer $status
+ * @property integer $reviewTimes
+ * @property integer $reviewGood
  * @property string $viewCount
  * @property string $commentCount
  * @property string $vGood
@@ -40,14 +43,14 @@ class CmsPost extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('catId, title, status', 'required'),
-			array('status', 'numerical', 'integerOnly'=>true),
+			array('catId, status', 'required'),
+			array('status, reviewTimes, reviewGood', 'numerical', 'integerOnly'=>true),
 			array('catId, userId, viewCount, commentCount, vGood, vBad', 'length', 'max'=>10),
+			array('srcId', 'length', 'max'=>64),
 			array('title, description, link, imgUrl, audioUrl, videoUrl', 'length', 'max'=>255),
-            array('description, content, createTime, updateTime, sortTime, imgUrl', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, catId, userId, title, description, content, link, imgUrl, audioUrl, videoUrl, status, viewCount, commentCount, vGood, vBad, createTime, updateTime', 'safe', 'on'=>'search'),
+			array('id, catId, userId, srcId, title, description, content, link, imgUrl, audioUrl, videoUrl, status, reviewTimes, reviewGood, viewCount, commentCount, vGood, vBad, createTime, updateTime', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -72,6 +75,7 @@ class CmsPost extends CActiveRecord
 			'id' => '记录ID',
 			'catId' => '分类',
 			'userId' => '用户',
+			'srcId' => '源网站ID',
 			'title' => '标题',
 			'description' => '描述',
 			'content' => '文章内容',
@@ -80,6 +84,8 @@ class CmsPost extends CActiveRecord
 			'audioUrl' => '音频地址',
 			'videoUrl' => '视频地址',
 			'status' => '审核状态',
+			'reviewTimes' => '审核次数',
+			'reviewGood' => '审核好评次数',
 			'viewCount' => '浏览数',
 			'commentCount' => '评论数',
 			'vGood' => '点赞数',
@@ -110,6 +116,7 @@ class CmsPost extends CActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('catId',$this->catId,true);
 		$criteria->compare('userId',$this->userId,true);
+		$criteria->compare('srcId',$this->srcId,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('content',$this->content,true);
@@ -118,6 +125,8 @@ class CmsPost extends CActiveRecord
 		$criteria->compare('audioUrl',$this->audioUrl,true);
 		$criteria->compare('videoUrl',$this->videoUrl,true);
 		$criteria->compare('status',Common::statusSearched($this->status, Constant::$_STATUS_LIST_SHOW), true);
+		$criteria->compare('reviewTimes',$this->reviewTimes);
+		$criteria->compare('reviewGood',$this->reviewGood);
 		$criteria->compare('viewCount',$this->viewCount,true);
 		$criteria->compare('commentCount',$this->commentCount,true);
 		$criteria->compare('vGood',$this->vGood,true);
@@ -146,6 +155,12 @@ class CmsPost extends CActiveRecord
 
     const POST_ORDER_HOT = 'hot';   //热门排序
     const POST_ORDER_NEW = 'new';   //新鲜排序
+
+    const REVIEW_ACTION_BAD = 'bad';    //审核动作 - 不好笑
+    const REVIEW_ACTION_HARD = 'hard';  //审核动作 - 不确定
+    const REVIEW_ACTION_GOOD = 'good';  //审核动作 - 好笑
+    const REVIEW_TIMES = 3;     //审核次数 - 达到3次不再审核
+    const REVIEW_GOOD = 2;      //审核好评次数 - 达到2次即审核通过
 
     /**
      * 随机获取列表
@@ -225,6 +240,15 @@ class CmsPost extends CActiveRecord
                 'contentDetailUrl' => Yii::app()->createUrl('/web/content/id/' . $item->id)
             );
 
+            //标题为空时处理
+            if(empty($d['title'])){
+                if(!empty($d['content'])){
+                    $d['title'] = Utils::getShortText($d['content'], 10, '');
+                }else{
+                    $d['title'] = Constant::POST_DEFAULT_TITLE;
+                }
+            }
+
             //用户信息
             if($item->userId == 0){
                 $d['userDetailUrl'] = Yii::app()->createUrl('/');
@@ -238,7 +262,7 @@ class CmsPost extends CActiveRecord
 
             //是否需要消除防盗链
             $d['killrefer'] = 'false';
-            if(strpos($d['imgUrl'], 'http://') !== false){
+            if(strpos($d['imgUrl'], 'http') !== false){
                 $d['killrefer'] = 'true';
             }
 

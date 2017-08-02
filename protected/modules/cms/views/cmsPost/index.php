@@ -22,7 +22,6 @@ $this->menu = array(
 $this->widget('bootstrap.widgets.BsGridView', array(
     'id' => 'cms-post-grid',
     'dataProvider' => $dataProvider,
-    //'categorys' => $categorys,
     'template' => '{pager}{summary}{items}{pager}',
     'summaryText' => '第 {start}-{end} 条,&nbsp;&nbsp;共 {count} 条.',
     'emptyText' => '无记录',
@@ -41,15 +40,27 @@ $this->widget('bootstrap.widgets.BsGridView', array(
             'value' => 'Common::statusSelected($data->catId, CmsCategory::getAllCategorys(), array(\'key\' => \'id\', \'value\' => \'name\'))'
         ),
 		'userId',
+		'srcId',
 		'title',
-		'description',
-		'content',
+		array(
+		    'header' => '图片',
+            'type' => 'raw',
+            'value' => 'CHtml::image($data->imgUrl, \'\', array(\'style\' => \'width:100px;height:auto;\'))'
+        ),
+		array(
+		    'header' => '文章内容',
+            'value' => '$data->content',
+            'htmlOptions' => array("style" => "width:8em;"),
+        ),
+        array(
+            'header' => '审核状态',
+            'value' => 'Common::statusSelected($data->status, Constant::$_STATUS_LIST_SHOW)'
+        ),
 		/*
 		'link',
 		'imgUrl',
 		'audioUrl',
 		'videoUrl',
-		'status',
 		'viewCount',
 		'commentCount',
 		'vGood',

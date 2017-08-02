@@ -36,7 +36,7 @@
         <div class="ibox-content text-center bxl-recommend">
             <div class="row">
                 <?php foreach ($top4 as $item):?>
-                    <a class="col-xs-3 col-md-3" href="<?php echo $item['contentDetailUrl'];?>">
+                    <a class="col-xs-6 col-md-6 col-lg-6" href="<?php echo $item['contentDetailUrl'];?>">
                         <div id="image_kill_referrer_<?php echo $item['id'];?>">
                             <?php if($item['killrefer'] == 'true'):?>
                                 <script>

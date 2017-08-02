@@ -75,11 +75,67 @@ function doLike(id, action, obj) {
     });
 }
 
+//投稿
+function submitHappy() {
+    var pic = $('#bxl-newadd-area input[name=uploadPic]').val();
+    var content = $('#bxl-newadd-area textarea').val();
+    if(pic == '' && $.trim(content).length == 0){
+        alert('请上传一张好玩的图片或者用文字描述搞笑好玩的事儿');
+        return;
+    }
+
+    $.ajax({
+        'type' : 'POST',
+        'url' : '/web/submitHappy',
+        'data' : {pic : pic, content : content},
+        'cache' : false,
+        'async' : true,
+        'dataType' : 'json',
+        success : function (ret) {
+            alert(ret.msg);
+            if(ret.err == 0){
+                //清空输入框
+                $('#bxl-newadd-area textarea').val('');
+                $('#bxl-newadd-area .upload-pic-result').remove();
+                $('#bxl-newadd-area input[name=uploadPic]').val('');
+                $('#bxl-newadd-area .bxl-newadd-limit span').text(300);
+            }
+        },
+        error : function () {
+            alert(g_default_tip)
+        }
+    });
+}
+
+//审稿
+function doReview(id, action) {
+    $.ajax({
+        'type' : 'POST',
+        'url' : '/web/doReview',
+        'data' : {id:id, action:action},
+        'cache' : false,
+        'async' : true,
+        'dataType' : 'json',
+        success : function (ret) {
+            if(ret.err == 0){
+                window.location.reload();
+            }
+        },
+        error : function () {
+            alert(g_default_tip)
+        }
+    });
+}
 /******************************************************************************/
 /***                              加载页面方法                              ***/
 /******************************************************************************/
 $(function () {
     $('.bxl-article .jiathis').on('onmouseover', function () {
         alert(1);
+    })
+
+    //投稿
+    $('#bxl-newadd-area input[type=submit]').on('click', function () {
+        submitHappy();
     })
 });
