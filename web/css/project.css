@@ -12,7 +12,7 @@ h1,h2,h3,h4,h5,a,span{color:#676a6c;}
 .bxl-side-right {margin-bottom: 50px;}
 .bxl-web-wraper{padding: 15px 0 !important;}
 .bxl-web-wraper .container{padding: 0;}
-.bxl-content, .bxl-content p{word-wrap:break-word;}
+.bxl-content, .bxl-content p{word-wrap:break-word;line-height: 24px;font-size: 16px;}
 .bxl-item{padding-bottom: 0;}
 .bxl-item .bxl-btn{border-top:1px solid #eee;}
 .bxl-item .bxl-btn button{font-size: 16px;width:66px;}

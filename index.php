@@ -2,6 +2,7 @@
 
 // change the following paths if necessary
 $yii='D:\svn_mihecn\project\tencent-pj-taesdk\yii-1.1.14.f0fee9\framework\yii.php';
+//$yii = './framework/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
 
 // remove the following lines when in production mode

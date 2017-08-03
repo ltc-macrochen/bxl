@@ -6,7 +6,7 @@
  * Time: 11:05
  */
 
-class Crawl_pengfu extends Crawl {
+class Crawl_qiubai extends Crawl {
     public static $instance = null;
     private $config = array(
         'fileName' => null,     //存储爬取数据的文件名称
@@ -33,7 +33,7 @@ class Crawl_pengfu extends Crawl {
 
         //数据存储文件
         if(empty(self::$instance->config['fileName'])){
-            self::$instance->config['fileName'] = 'vdata-pengfu-' . date('Ymd') . '.txt';
+            self::$instance->config['fileName'] = 'vdata-qiubai-' . date('Ymd') . '.txt';
         }
 
         //爬取URL
@@ -49,16 +49,16 @@ class Crawl_pengfu extends Crawl {
         //抓取处理入口
         //phpQuery::newDocumentFile($config['baseCrawlUrl']);
 
-        $lastPageNum = 52;
+        $lastPageNum = 84;
 
         //循环爬取
         $count = 1;
         $continuePoint = true;
         for($i = 1; $i <= $lastPageNum; $i++){
-            //段子 https://www.pengfu.com/xiaohua_1.html 52
-            //趣图 https://www.pengfu.com/qutu_1.html 30
-            //热门 https://www.pengfu.com/zuijurenqi_1_{$i}.html 52
-            $spiderUrl = "https://www.pengfu.com/xiaohua_{$i}.html";
+            //段子
+            //趣图
+            //热门
+            $spiderUrl = "https://www.qiushibaike.com/gif/6/page_{$i}/";
             $this->dataFormat($spiderUrl, $config['fileName'], $count, $continuePoint);
         }
 
@@ -76,7 +76,7 @@ class Crawl_pengfu extends Crawl {
         $file = fopen($fileName, 'a+') or die('unable to open file!');
 
         phpQuery::newDocumentFile($crawlUrl);
-        $ret = pq('.list-item');
+        $ret = pq('a.images');
 
         foreach ($ret->elements as $item) {
             //处理记录数
@@ -102,26 +102,27 @@ class Crawl_pengfu extends Crawl {
                 'tags'          => ''   //标签
             );
 
-            $info['id'] = pq($item)->attr('id');
-            $gif = pq($item)->find('.content-img img')->attr('gifsrc');
-            $info['img'] = $gif ? $gif : pq($item)->find('.content-img img')->attr('src');
-            $info['title'] = pq($item)->find('dl dd h1 a')->text();
-            $info['vGood'] = pq($item)->find('.action .ding em')->text();
-            $info['vBad'] = pq($item)->find('.action .cai em')->text();
+            $detailUrl = pq($item)->attr('href');
+
+            $info['id'] = '';
+            $gif = '';
+            $info['img'] = $gif ? $gif : '';
+            $info['title'] = pq($item)->find('.imagesText')->text();
+            $info['vGood'] = 0;
+            $info['vBad'] = 0;
             $info['tags'] = '';
-            $info['content'] = Utils::trimStr(pq($item)->find('.content-img')->text());
+            $info['content'] = '';
 
             $info['title'] = str_replace(array('"',"'"), '”', $info['title']);
-            //$info['title'] = str_replace("'", '’', $info['title']);
             $info['content'] = str_replace(array('"',"'"), '”', $info['content']);
-            //$info['content'] = str_replace("'", '’', $info['content']);
 
-            $tagItem = pq($item)->find('.action .fr a');
-            $tagArr = array();
-            foreach ($tagItem as $tag) {
-                $tagArr[] = pq($tag)->text();
-            }
-            $info['tags'] = implode('-', $tagArr);
+            //唯一源ID
+            $detailUrlInfo = explode('/', $detailUrl);
+            $info['id'] = $detailUrlInfo[2];
+
+            $detailUrl = "https://www.qiushibaike.com" . $detailUrl;
+            phpQuery::newDocumentFile($detailUrl);
+            $info['img'] = pq('#gifImage')->attr('data-src');
 
             $line = implode('|', $info) . "\n";
             fwrite($file, $line);

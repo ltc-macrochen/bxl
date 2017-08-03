@@ -21,7 +21,20 @@
             <p>扫描二维码 用手机看爆笑驴</p>
         </div>
     </div>
-
+    <div class="ibox float-e-margins bxl-ibox-right">
+        <div class="ibox-title">
+            <h4>热门标签</h4>
+        </div>
+        <div class="ibox-content bxl-tag">
+            <!--ad-->
+            <script type="text/javascript">
+                var sogou_ad_id=636066;
+                var sogou_ad_height=250;
+                var sogou_ad_width=250;
+            </script>
+            <script type='text/javascript' src='http://images.sohu.com/cs/jsfile/js/c.js'></script>
+        </div>
+    </div>
     <div class="ibox float-e-margins bxl-ibox-right">
         <div class="ibox-content text-center bxl-qrcode">
             <img src="/web/images/bxl-weixin.jpg" alt="扫描二维码 关注爆笑驴微信">
@@ -57,21 +70,6 @@
                     </a>
                 <?php endforeach;?>
             </div>
-        </div>
-    </div>
-
-    <div class="ibox float-e-margins bxl-ibox-right">
-        <div class="ibox-title">
-            <h4>热门标签</h4>
-        </div>
-        <div class="ibox-content bxl-tag">
-            <a href="" class="text-info">不死星人</a>
-            <a href="">啦啦</a>
-            <a href="">喵星人</a>
-            <a href="" class="text-warning">秀恩爱</a>
-            <a href="">秀恩爱</a>
-            <a href="">秀恩爱</a>
-            <a href="">秀恩爱</a>
         </div>
     </div>
 </div>

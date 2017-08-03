@@ -126,6 +126,13 @@
                                 </a>
                             <?php endforeach;?>
                         </div>
+
+                        <script type="text/javascript">
+                            var sogou_ad_id=881925;
+                            var sogou_ad_height=90;
+                            var sogou_ad_width=580;
+                        </script>
+                        <script type='text/javascript' src='http://images.sohu.com/cs/jsfile/js/c.js'></script>
                     </div>
                 </div>
 

@@ -139,8 +139,20 @@
                 <div>
                     <strong>Copyright</strong> baoxiaolv.cn &copy; <?php echo date('Y')?>
                 </div>
-            </div>
+                <!--统计-->
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260065823'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1260065823%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
 
+                <!--ad_duilian-->
+                <?php $isMobile = EvilDefence::isMobileDevice();?>
+                <?php if(!$isMobile):?>
+                    <script type="text/javascript">
+                        var sogou_ad_id=615050;
+                        var sogou_ad_height=300;
+                        var sogou_ad_width=120;
+                    </script>
+                    <script type="text/javascript" charset="gb2312" src="http://images.sohu.com/cs/jsfile/js/f.js"></script>
+                <?php endif;?>
+            </div>
         </div>
     </div>
 </body>

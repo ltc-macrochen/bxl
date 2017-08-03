@@ -128,6 +128,7 @@ class WebController extends Controller {
         $criteria->order = 'rand()';
         $post = CmsPost::model()->findAll($criteria);
         if(empty($post)){
+            header("Content-type: text/html; charset=utf-8");
             $noticeJs = Utils::getAlertBackString('没有需要审核的稿子啦~不如去分享点儿笑料吧~~', Yii::app()->createUrl('/web/newAdd'));
             echo $noticeJs;
             return;

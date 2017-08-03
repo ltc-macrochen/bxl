@@ -66,6 +66,15 @@ return array(
             'urlSuffix' => '.html'       //@macrochen 网址后缀
         ),
         //数据库
+        /* pro
+        'db' => array(
+            'connectionString' => 'mysql:host=qdm167504282.my3w.com;dbname=qdm167504282_db',
+            'emulatePrepare' => true,
+            'username' => 'qdm167504282',
+            'password' => 'Macro2017',
+            'charset' => 'utf8',
+        ),
+        */
         'db' => array(
             'connectionString' => 'mysql:host=localhost;dbname=db_baoxiaolv',
             'emulatePrepare' => true,

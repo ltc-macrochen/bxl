@@ -18,6 +18,9 @@ class CrawlController extends Controller {
 
     /**
      * pengfu.com
+     * gifcool.com
+     * gaoxiaogif.com
+     * https://www.qiushibaike.com/gif/6/page_3/
      */
     public function actionCrawlpengfu(){
         ob_end_flush();
@@ -36,6 +39,27 @@ class CrawlController extends Controller {
         var_dump('used time:' . ($endTime-$startTime));
     }
 
+    /**
+     * pengfu.com
+     * https://www.qiushibaike.com/gif/6/page_3/
+     */
+    public function actionCrawlqiubai(){
+        ob_end_flush();
+        ob_implicit_flush(1);
+        $startTime = time();
+
+        $config = array(
+            'fileName' => 'vdata-qiubai-' . date('Ymd') . '.txt',
+        );
+        $m = Crawl_qiubai::getInstance($config);
+        $ret = $m->doCrawl();
+        var_dump($ret);
+
+
+        $endTime = time();
+        var_dump('used time:' . ($endTime-$startTime));
+    }
+
     //远程入库
     public function actionToDB(){
         ob_end_flush();
@@ -43,7 +67,7 @@ class CrawlController extends Controller {
 
         $config = array(
             'fileName' => 'vdata-upload.txt',//vdata-1717she-20170621.txt
-            'prefix' => 'pengfu-',
+            'prefix' => 'qiubai-',
             'delimiter' => '|',     //字段分隔符
             'fieldCount' => 7,      //文件中每行的字段数
             'indexId' => 0,         //源网站ID索引
