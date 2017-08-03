@@ -38,7 +38,8 @@
                                     <div class="bxl-thumb text-center" id="image_kill_referrer_<?php echo $post[0]['id'];?>">
                                         <?php if($post[0]['killrefer'] == 'true'):?>
                                             <script>
-                                                document.getElementById('image_kill_referrer_<?php echo $post[0]['id'];?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $post[0]['imgUrl'];?>');
+                                                var opt = {'style' : 'max-width:300px;', 'contentDetailUrl' : '<?php echo $post[0]['contentDetailUrl'];?>'}
+                                                document.getElementById('image_kill_referrer_<?php echo $post[0]['id'];?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $post[0]['imgUrl'];?>', opt);
                                             </script>
                                         <?php else:?>
                                             <img src="<?php echo $post[0]['imgUrl'];?>" alt="<?php echo $post[0]['title'];?>">
@@ -109,16 +110,19 @@
                         <div class="row">
                             <?php foreach ($guess4 as $item):?>
                                 <a class="col-xs-6 col-sm-3 col-md-3 col-lg-3" href="<?php echo $item['contentDetailUrl'];?>">
-                                    <div id="image_kill_referrer_<?php echo $item['id'];?>">
+                                    <?php $guess4Id = ($item['id'] == $post[0]['id']) ? $item['id'] . '_guess4' : $item['id'];?>
+                                    <div id="image_kill_referrer_<?php echo $guess4Id;?>">
                                         <?php if($item['killrefer'] == 'true'):?>
                                             <script>
-                                                document.getElementById('image_kill_referrer_<?php echo $item['id'];?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $item['imgUrl'];?>');
+                                                var opt = {'style' : 'width:126px;height:95px;cursor: pointer;', 'contentDetailUrl' : '<?php echo $item['contentDetailUrl'];?>'};
+                                                document.getElementById('image_kill_referrer_<?php echo $guess4Id;?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $item['imgUrl'];?>', opt);
                                             </script>
                                         <?php else:?>
                                         <img src="<?php echo $item['imgUrl'];?>" alt="<?php echo $item['title'];?>">
                                         <?php endif;?>
                                     </div>
                                     <p><?php echo $item['title']?></p>
+
                                 </a>
                             <?php endforeach;?>
                         </div>
@@ -134,10 +138,12 @@
                         <div class="row">
                             <?php foreach ($top6 as $item):?>
                                 <a class="col-xs-6 col-sm-3 col-md-3 col-lg-3" href="<?php echo $item['contentDetailUrl'];?>">
-                                    <div id="image_kill_referrer_<?php echo $item['id'];?>">
+                                    <?php $top6Id = ($item['id'] == $post[0]['id']) ? $item['id'] . '_top6' : $item['id'];?>
+                                    <div id="image_kill_referrer_<?php echo $top6Id;?>">
                                         <?php if($item['killrefer'] == 'true'):?>
                                             <script>
-                                                document.getElementById('image_kill_referrer_<?php echo $item['id'];?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $item['imgUrl'];?>');
+                                                var opt = {'style' : 'width:126px;height:95px;cursor: pointer;', 'contentDetailUrl' : '<?php echo $item['contentDetailUrl'];?>'};
+                                                document.getElementById('image_kill_referrer_<?php echo $top6Id;?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $item['imgUrl'];?>', opt);
                                             </script>
                                         <?php else:?>
                                         <img src="<?php echo $item['imgUrl'];?>" alt="<?php echo $item['title'];?>">
@@ -155,7 +161,7 @@
                     <div class="ibox-title">
                         爆笑评论（<i class="text-danger"><?php echo $post[0]['commentCount'];?> </i>条评论）
                     </div>
-                    <div class="ibox-content bxl-recommend">
+                    <div class="ibox-content">
                         <textarea class="form-control" title="说点什么吧，期待您的神回复！" rows="5" placeholder="说点什么吧，期待您的神回复！"></textarea>
                         <div class="comment-input-action">
                             <a class="btn btn-info" href="">登录</a>
@@ -178,6 +184,10 @@
 
 <script type="text/javascript">
     $(function () {
-
+        $('#bxl-comment-area textarea').on('keyup', function () {
+            var inputVal = $(this).val();
+            var inputLen = inputVal.length;
+            $('#bxl-comment-area .bxl-comment-limit span').text(300 - parseInt(inputLen));
+        })
     })
 </script>

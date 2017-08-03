@@ -26,7 +26,6 @@ class CrawlController extends Controller {
 
         $config = array(
             'fileName' => 'vdata-pengfu-' . date('Ymd') . '.txt',
-            'baseCrawlUrl' => 'https://www.pengfu.com/qutu_1.html'
         );
         $m = Crawl_pengfu::getInstance($config);
         $ret = $m->doCrawl();
@@ -63,7 +62,7 @@ class CrawlController extends Controller {
         $continuePoint = true;
         $dataLength = count($data);
         $j = 0; //统计有效插入数据
-        $baseSql = "insert into `{$table}` (`title`, `srcId`, `imgUrl`, `content`, `vGood`, `vBad`, `status`, `createTime`) values";
+        $baseSql = "insert into `{$table}` (`catId`, `title`, `srcId`, `imgUrl`, `content`, `vGood`, `vBad`, `status`, `createTime`) values";
         foreach ($data as $line) {
             $lineData = explode($config['delimiter'], $line);
 
@@ -83,6 +82,7 @@ class CrawlController extends Controller {
 //                continue;
 //            }
 
+            $catId = CmsPost::POST_CATEGORY_CONTENT;
             $title = $lineData[$config['indexTitle']];
             $srcId = $config['prefix'] . $lineData[$config['indexId']];
             $imgUrl = $lineData[$config['indexImg']];
@@ -90,6 +90,9 @@ class CrawlController extends Controller {
             $vGood = intval($this->trimStr($lineData[$config['indexVgood']]));
             $vBad = intval($this->trimStr($lineData[$config['indexVbad']]));
             $status = 0;
+            if(!empty($imgUrl)){
+                $catId = CmsPost::POST_CATEGORY_PIC;
+            }
 
             //排重插入数据库
             //$db = Yii::app()->db_v;
@@ -100,7 +103,7 @@ class CrawlController extends Controller {
                 var_dump("{$srcId} repeat");
                 continue;
             }
-            $sql = $baseSql . "('{$title}', '{$srcId}', '{$imgUrl}', '{$content}', $vGood, $vBad, {$status}, '{$createTime}');";
+            $sql = $baseSql . "({$catId}, '{$title}', '{$srcId}', '{$imgUrl}', '{$content}', $vGood, $vBad, {$status}, '{$createTime}');";
 
             //写入数据库
             $command = $db->createCommand($sql);

@@ -55,7 +55,7 @@ class Controller extends CController {
      */
     public $roleFilter = array(
         //未登录用户，不能进行任何操作
-        AdminRole::ROLE_GUEST => array("deny"=>array("/site/mail","/site/config"),"permit"=>array("site")),
+        AdminRole::ROLE_GUEST => array("deny"=>array("/site/mail","/site/config"),"permit"=>array("site", "web")),
         //系统管理员，可以进行所有操作
         AdminRole::ROLE_ADMINISTRATOR => array("permit"=>"*"),
         /*
@@ -85,9 +85,9 @@ class Controller extends CController {
 		$this->title = isset(Constant::$_MODEL_LANGUAGE_MAP[ucfirst($id)]) ? Constant::$_MODEL_LANGUAGE_MAP[ucfirst($id)] : '后台管理系统';
 
         //强制登录检查
-        if ($id !="site" && Yii::app()->user->isGuest) {
-            Yii::app()->user->loginRequired();
-        }
+//        if ($id !="site" && Yii::app()->user->isGuest) {
+//            Yii::app()->user->loginRequired();
+//        }
         
         //将项目管理员通过配置获取的功能放入【角色访问权限控制器roleFilter】中
         $this->adminFunctionFilter();

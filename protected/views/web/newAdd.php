@@ -27,8 +27,9 @@ $cs->registerScriptFile('/web/js/common.js', CClientScript::POS_END);
                                 <span class="input-group-btn">
                                     <button id="btn-upload-pic-imgUrl" class="btn-upload-pic btn btn-info" name="yt0" type="button" >
                                         <i class="fa fa-upload"></i>
-                                        上传图片
+                                        <span class="hidden-xs">上传</span>图片
                                     </button>
+                                    最大2M
                                 </span>
 
                                 <input type="submit" class="btn btn-danger pull-right" value="提交">

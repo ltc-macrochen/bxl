@@ -37,9 +37,9 @@ class Crawl_pengfu extends Crawl {
         }
 
         //爬取URL
-        if(empty(self::$instance->config['baseCrawlUrl'])){
-            throw new CException('crawl url should not be empty');
-        }
+//        if(empty(self::$instance->config['baseCrawlUrl'])){
+//            throw new CException('crawl url should not be empty');
+//        }
 
         return self::$instance;
     }
@@ -49,13 +49,13 @@ class Crawl_pengfu extends Crawl {
         //抓取处理入口
         //phpQuery::newDocumentFile($config['baseCrawlUrl']);
 
-        $lastPageNum = 25;
+        $lastPageNum = 52;
 
         //循环爬取
         $count = 1;
         $continuePoint = true;
         for($i = 1; $i <= $lastPageNum; $i++){
-            $spiderUrl = "https://www.pengfu.com/qutu_{$i}.html";
+            $spiderUrl = "https://www.pengfu.com/zuijurenqi_1_{$i}.html";
             $this->dataFormat($spiderUrl, $config['fileName'], $count, $continuePoint);
         }
 
@@ -106,6 +106,12 @@ class Crawl_pengfu extends Crawl {
             $info['vGood'] = pq($item)->find('.action .ding em')->text();
             $info['vBad'] = pq($item)->find('.action .cai em')->text();
             $info['tags'] = '';
+            $info['content'] = Utils::trimStr(pq($item)->find('.content-img')->text());
+
+            $info['title'] = str_replace(array('"',"'"), '”', $info['title']);
+            //$info['title'] = str_replace("'", '’', $info['title']);
+            $info['content'] = str_replace(array('"',"'"), '”', $info['content']);
+            //$info['content'] = str_replace("'", '’', $info['content']);
 
             $tagItem = pq($item)->find('.action .fr a');
             $tagArr = array();

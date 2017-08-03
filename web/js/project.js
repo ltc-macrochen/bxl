@@ -52,7 +52,7 @@ function addFavorite() {
 //投票
 sessionStorage.dolike = 0;
 function doLike(id, action, obj) {
-    if(sessionStorage.dolike != 0){
+    if(sessionStorage.dolike >= 100){
         return;
     }
 
@@ -65,7 +65,7 @@ function doLike(id, action, obj) {
         'dataType' : 'json',
         success : function (ret) {
             if(ret.err == 0){
-                sessionStorage.dolike = 1;
+                sessionStorage.dolike = parseInt(sessionStorage.dolike) + 1;
                 increaseValue($(obj).find('span'), 1);
             }
         },
@@ -138,4 +138,5 @@ $(function () {
     $('#bxl-newadd-area input[type=submit]').on('click', function () {
         submitHappy();
     })
+
 });

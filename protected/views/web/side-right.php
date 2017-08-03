@@ -37,10 +37,17 @@
             <div class="row">
                 <?php foreach ($top4 as $item):?>
                     <a class="col-xs-6 col-md-6 col-lg-6" href="<?php echo $item['contentDetailUrl'];?>">
-                        <div id="image_kill_referrer_<?php echo $item['id'];?>">
+                        <?php
+                        $top4Id = $item['id'];
+                        if(isset($post)){
+                            $top4Id = ($item['id'] == $post[0]['id']) ? $item['id'] . '_top4' : $item['id'];
+                        }
+                        ?>
+                        <div id="image_kill_referrer_<?php echo $top4Id;?>">
                             <?php if($item['killrefer'] == 'true'):?>
                                 <script>
-                                    document.getElementById('image_kill_referrer_<?php echo $item['id'];?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $item['imgUrl'];?>');
+                                    var opt = {'style' : 'width:126px;height:95px;cursor: pointer;', 'contentDetailUrl' : '<?php echo $item['contentDetailUrl'];?>'};
+                                    document.getElementById('image_kill_referrer_<?php echo $top4Id;?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $item['imgUrl'];?>',opt);
                                 </script>
                             <?php else:?>
                             <img src="<?php echo $item['imgUrl'];?>" alt="<?php echo $item['title'];?>">

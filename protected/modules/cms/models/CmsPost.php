@@ -182,7 +182,7 @@ class CmsPost extends CActiveRecord
      * @param int $count
      * @return array
      */
-    public static function getArticleList($order = 'viewCount desc', $type = self::POST_CATEGORY_PIC, $count = 6, $cacheTime = Constant::CACHE_TIME_LONG){
+    public static function getArticleList($order = 'viewCount desc', $type = self::POST_CATEGORY_PIC, $count = 4, $cacheTime = Constant::CACHE_TIME_LONG){
         $cache = Yii::app()->cache;
         if($cache){
             $extStr = "_{$type}_{$order}";

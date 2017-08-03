@@ -55,7 +55,7 @@ class WebController extends Controller {
             $criteria->addCondition($condition);
             $count = CmsPost::model()->count($criteria);
             $pager = new CPagination($count);
-            $pager->pageSize=20;
+            $pager->pageSize=10;
             $pager->applyLimit($criteria);
             $postRet = CmsPost::model()->findAll($criteria);
             $postdata = CmsPost::formatPostData($postRet);
@@ -160,11 +160,18 @@ class WebController extends Controller {
 
         //vid合法性检查
         $id = Yii::app()->request->getPost('id');
-        $pattern = '/^[\d]$/i';
-        if(!preg_match($pattern, $id)){
+        if(!is_numeric($id)){
             echo CJSON::encode(array('err' => -1, 'msg' => 'unvalid id'));
             return;
         }
+
+        //访问控制
+//        $key = Utils::getClientIp();
+//        $isAccessLimit = EvilDefence::isAccessTimesLimit(__METHOD__, $key, '');
+//        if($isAccessLimit){
+//            echo CJSON::encode(array('err' => -1, 'msg' => '您的操作过于频繁，请稍后再试~'));
+//            return;
+//        }
 
         $postRet = CmsPost::model()->findByPk($id);
         if(empty($postRet) || $postRet->status != Constant::STATUS_SHOW){

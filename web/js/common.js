@@ -92,6 +92,9 @@ $(document).ready(function () {
     });
 });
 
+function error(msg){
+    alert(msg);
+}
 
 /*
  * 安装文件上传组件

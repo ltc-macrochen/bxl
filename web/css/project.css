@@ -2,6 +2,7 @@ h1,h2,h3,h4,h5,a,span{color:#676a6c;}
 @media (min-width: 1200px){
     .container{width: 960px!important;}
 }
+.pagination li:first-child, .pagination li:last-child{display: none!important;}
 .ibox{margin-bottom: 15px!important;}
 .ibox .ibox-title{padding:7px 15px 7px;}
 .bxl-slogan{float: left;height: 50px;line-height: 20px;background-color: #fff;color: #666;margin: 0;padding: 15px 25px;font-size: 18px;}
@@ -27,6 +28,7 @@ h1,h2,h3,h4,h5,a,span{color:#676a6c;}
 .bxl-ibox-right .ibox-content{padding: 10px;}
 .bxl-recommend img{width: 126px;height: 95px;}
 .bxl-recommend p{width: auto;height:20px;margin:5px 5px 10px 5px;overflow:hidden;font-size: 14px;}
+.bxl-recommend a{padding:0 10px!important;}
 
 .bxl-recommend ul li{width: 126px;height: 125px;padding-left: 15px;padding-top: 10px;float: left;}
 .bxl-recommend ul li a{display: block;width: 126px;height: 125px;}
@@ -51,3 +53,7 @@ h1,h2,h3,h4,h5,a,span{color:#676a6c;}
 .bxl-newadd .newadd-input-action span{font-size: 12px;}
 .bxl-newadd .bxl-newadd-limit{height: 32px;line-height: 32px;margin-right: 10px;}
 .upload-pic .remove{display: block!important;font-size: 21px!important;padding-left: 2px;line-height: 24px;}
+
+.bxl-pagenation{margin-bottom: 20px;}
+.bxl-pagenation li a{font-size: 18px!important;}
+.bxl-pagenation li.active a{font-size: 18px!important;background-color: #1ab394!important;}

@@ -42,7 +42,8 @@
                                         <div class="bxl-thumb text-center" id="image_kill_referrer_<?php echo $item['id'];?>">
                                             <?php if($item['killrefer'] == 'true'):?>
                                                 <script>
-                                                    document.getElementById('image_kill_referrer_<?php echo $item['id'];?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $item['imgUrl'];?>');
+                                                    var opt = {'style' : 'max-width:600px;cursor: pointer;', 'contentDetailUrl' : '<?php echo $item['contentDetailUrl'];?>'};
+                                                    document.getElementById('image_kill_referrer_<?php echo $item['id'];?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $item['imgUrl'];?>', opt);
                                                 </script>
                                             <?php else:?>
                                                 <img src="<?php echo $item['imgUrl'];?>" alt="<?php echo $item['title'];?>">
@@ -96,7 +97,7 @@
                 <?php endforeach;?>
 
                 <!--分页页码-->
-                <div class="text-center">
+                <div class="text-center bxl-pagenation">
                     <?php $this->widget('BsPager',array(
                         //'header' => '',
                         'firstPageLabel' => '首页',
@@ -104,7 +105,8 @@
                         'prevPageLabel' => '上一页',
                         'nextPageLabel' => '下一页',
                         'pages' => $pages,
-                        'maxButtonCount'=>4,
+                        'maxButtonCount'=>3,
+                        'htmlOptions' => array('style' => '')
                     ));?>
                 </div>
             </div>
