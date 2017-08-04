@@ -55,7 +55,7 @@ class WebController extends Controller {
             $criteria->addCondition($condition);
             $count = CmsPost::model()->count($criteria);
             $pager = new CPagination($count);
-            $pager->pageSize=10;
+            $pager->pageSize=5;
             $pager->applyLimit($criteria);
             $postRet = CmsPost::model()->findAll($criteria);
             $postdata = CmsPost::formatPostData($postRet);
