@@ -18,9 +18,10 @@ class WebController extends Controller {
         $order = Yii::app()->request->getQuery('order');
         if($order == CmsPost::POST_ORDER_HOT){
             $defaultOrder = 'viewCount desc';
-        } else {
-            $order = CmsPost::POST_ORDER_NEW;
+        } else if($order == CmsPost::POST_ORDER_NEW){
             $defaultOrder = 'id desc';
+        } else {
+            $order = $defaultOrder = 'rand()';
         }
 
         //分类
@@ -105,7 +106,6 @@ class WebController extends Controller {
             array(
                 'post' => $postData,
                 'guess4' => CmsPost::getRandomList(),
-                'top6' => CmsPost::getArticleList(),
                 'top4' => CmsPost::getRandomList(CmsPost::POST_CATEGORY_PIC, 4, Constant::CACHE_TIME_SHORT)
             )
         );

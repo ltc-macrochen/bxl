@@ -46,7 +46,7 @@
                                                     document.getElementById('image_kill_referrer_<?php echo $item['id'];?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $item['imgUrl'];?>', opt);
                                                 </script>
                                             <?php else:?>
-                                                <img src="<?php echo $item['imgUrl'];?>" alt="<?php echo $item['title'];?>">
+                                                <img class="lazy" src="/web/images/grey.gif" data-original="<?php echo $item['imgUrl'];?>" alt="<?php echo $item['title'];?>">
                                             <?php endif;?>
                                         </div>
                                     <?php endif;?>

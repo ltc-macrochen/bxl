@@ -118,7 +118,7 @@
                                                 document.getElementById('image_kill_referrer_<?php echo $guess4Id;?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $item['imgUrl'];?>', opt);
                                             </script>
                                         <?php else:?>
-                                        <img src="<?php echo $item['imgUrl'];?>" alt="<?php echo $item['title'];?>">
+                                        <img class="lazy" src="/web/images/grey.gif" data-original="<?php echo $item['imgUrl'];?>" alt="<?php echo $item['title'];?>">
                                         <?php endif;?>
                                     </div>
                                     <p><?php echo $item['title']?></p>
@@ -126,39 +126,19 @@
                                 </a>
                             <?php endforeach;?>
                         </div>
-
-                        <script type="text/javascript">
-                            var sogou_ad_id=881925;
-                            var sogou_ad_height=90;
-                            var sogou_ad_width=580;
-                        </script>
-                        <script type='text/javascript' src='http://images.sohu.com/cs/jsfile/js/c.js'></script>
                     </div>
                 </div>
 
-                <!--热门推荐-->
+                <!--ad-->
                 <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h3>热门推荐</h3>
-                    </div>
                     <div class="ibox-content text-center bxl-recommend">
                         <div class="row">
-                            <?php foreach ($top6 as $item):?>
-                                <a class="col-xs-6 col-sm-3 col-md-3 col-lg-3" href="<?php echo $item['contentDetailUrl'];?>">
-                                    <?php $top6Id = ($item['id'] == $post[0]['id']) ? $item['id'] . '_top6' : $item['id'];?>
-                                    <div id="image_kill_referrer_<?php echo $top6Id;?>">
-                                        <?php if($item['killrefer'] == 'true'):?>
-                                            <script>
-                                                var opt = {'style' : 'width:126px;height:95px;cursor: pointer;', 'contentDetailUrl' : '<?php echo $item['contentDetailUrl'];?>'};
-                                                document.getElementById('image_kill_referrer_<?php echo $top6Id;?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $item['imgUrl'];?>', opt);
-                                            </script>
-                                        <?php else:?>
-                                        <img src="<?php echo $item['imgUrl'];?>" alt="<?php echo $item['title'];?>">
-                                        <?php endif;?>
-                                    </div>
-                                    <p><?php echo $item['title']?></p>
-                                </a>
-                            <?php endforeach;?>
+                            <script type="text/javascript">
+                                var sogou_ad_id=881925;
+                                var sogou_ad_height=90;
+                                var sogou_ad_width=580;
+                            </script>
+                            <script type='text/javascript' src='http://images.sohu.com/cs/jsfile/js/c.js'></script>
                         </div>
                     </div>
                 </div>

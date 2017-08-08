@@ -263,7 +263,7 @@ class CmsPost extends CActiveRecord
             //是否需要消除防盗链
             $d['killrefer'] = 'false';
             if(strpos($d['imgUrl'], 'sinaimg.cn') === false && strpos($d['imgUrl'], 'http') !== false){
-                $d['killrefer'] = 'true';
+                //$d['killrefer'] = 'true';
             }
 
             $data[] = $d;

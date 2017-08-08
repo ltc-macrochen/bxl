@@ -139,4 +139,6 @@ $(function () {
         submitHappy();
     })
 
+    //图片延时加载
+    $("img.lazy").lazyload({effect: "fadeIn",threshold :180});
 });

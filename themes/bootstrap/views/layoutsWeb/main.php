@@ -13,6 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <!--360验证-->
+    <meta name="360-site-verification" content="a43b45b2637d11eaa649c6924661654a" />
     <!--[if IE 9]> <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1"> <![endif]-->
     <!--[if !IE 9]> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <![endif]-->
     <!--[if IE]>
@@ -48,6 +50,7 @@
     <link rel="stylesheet" type="text/css" href="/web/css/project.css">
     <script type="text/javascript" src="/web/js/project.js"></script>
     <script type="text/javascript" src="/web/js/referrer-killer.js"></script>
+    <script type="text/javascript" src="/web/js/jquery.lazyload.min.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -155,5 +158,28 @@
             </div>
         </div>
     </div>
+
+    <script>
+        <!--360自动收录-->
+        (function(){
+            var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?e2f78ba627986ea956f80168dd4d2060":"https://jspassport.ssl.qhimg.com/11.0.1.js?e2f78ba627986ea956f80168dd4d2060";
+            document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+    </script>
+    <script>
+        <!--baidu自动推送-->
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
 </body>
 </html>

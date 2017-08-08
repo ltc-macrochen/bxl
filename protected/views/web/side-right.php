@@ -21,12 +21,10 @@
             <p>扫描二维码 用手机看爆笑驴</p>
         </div>
     </div>
+
+    <!--ad-->
     <div class="ibox float-e-margins bxl-ibox-right">
-        <div class="ibox-title">
-            <h4>热门标签</h4>
-        </div>
         <div class="ibox-content bxl-tag">
-            <!--ad-->
             <script type="text/javascript">
                 var sogou_ad_id=636066;
                 var sogou_ad_height=250;
@@ -35,6 +33,7 @@
             <script type='text/javascript' src='http://images.sohu.com/cs/jsfile/js/c.js'></script>
         </div>
     </div>
+
     <div class="ibox float-e-margins bxl-ibox-right">
         <div class="ibox-content text-center bxl-qrcode">
             <img src="/web/images/bxl-weixin.jpg" alt="扫描二维码 关注爆笑驴微信">
@@ -63,7 +62,7 @@
                                     document.getElementById('image_kill_referrer_<?php echo $top4Id;?>').innerHTML = ReferrerKiller.imageHtml('<?php echo $item['imgUrl'];?>',opt);
                                 </script>
                             <?php else:?>
-                            <img src="<?php echo $item['imgUrl'];?>" alt="<?php echo $item['title'];?>">
+                            <img class="lazy" src="/web/images/grey.gif" data-original="<?php echo $item['imgUrl'];?>" alt="<?php echo $item['title'];?>">
                             <?php endif;?>
                         </div>
                         <p><?php echo $item['title']?></p>
