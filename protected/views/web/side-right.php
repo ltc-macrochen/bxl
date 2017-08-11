@@ -25,12 +25,7 @@
     <!--ad-->
     <div class="ibox float-e-margins bxl-ibox-right">
         <div class="ibox-content bxl-tag">
-            <script type="text/javascript">
-                var sogou_ad_id=636066;
-                var sogou_ad_height=250;
-                var sogou_ad_width=250;
-            </script>
-            <script type='text/javascript' src='http://images.sohu.com/cs/jsfile/js/c.js'></script>
+
         </div>
     </div>
 

@@ -49,7 +49,7 @@ class Crawl_gaoxiaogif extends Crawl {
         //抓取处理入口
         //phpQuery::newDocumentFile($config['baseCrawlUrl']);
 
-        $lastPageNum = 400;
+        $lastPageNum = 1218;
 
         //循环爬取
         $count = 1;
@@ -59,10 +59,10 @@ class Crawl_gaoxiaogif extends Crawl {
             //段子
             //首页 http://www.gaoxiaogif.com/index_2.html 400
             //热门 http://www.gaoxiaogif.com/hot/index_2.html 1218
-            $spiderUrl = "http://www.gaoxiaogif.com/index_{$i}.html";
+            $spiderUrl = "http://www.gaoxiaogif.com/hot/index_{$i}.html";
             $this->dataFormat($spiderUrl, $config['fileName'], $count, $continuePoint);
             //break;
-            sleep(3);
+            sleep(1);
         }
 
         return array('err' => 0, 'msg' => 'success');
@@ -108,24 +108,24 @@ class Crawl_gaoxiaogif extends Crawl {
             $detailUrl = pq($item)->find('.listgif-title h2 a')->attr('href');
 
             //todo ----> category
-//            $info['id'] = '';
-//            $gif = pq($item)->find('.listgif-giftu>img')->attr('gifsrc');
-//            $info['img'] = $gif ? $gif : pq($item)->find('.listgif-giftu>img')->attr('src');
-//            $info['title'] = pq($item)->find('.listgif-title h2 a')->text();
-//            $info['vGood'] = pq($item)->find('.digg .dyx span')->text();
-//            $info['vBad'] = pq($item)->find('.digg .cyx span')->text();
-//            $info['tags'] = '';
-//            $info['content'] = '';
-
-            //todo ----> index
             $info['id'] = '';
-            $gif = pq($item)->find('.listgif-giftu p>img')->attr('gifsrc');
-            $info['img'] = $gif ? $gif : pq($item)->find('.listgif-giftu p>img')->attr('src');
+            $gif = pq($item)->find('.listgif-giftu>img')->attr('gifsrc');
+            $info['img'] = $gif ? $gif : pq($item)->find('.listgif-giftu>img')->attr('src');
             $info['title'] = pq($item)->find('.listgif-title h2 a')->text();
-            $info['vGood'] = pq($item)->find('.digg .dyx')->text();
-            $info['vBad'] = pq($item)->find('.digg .cyx')->text();
+            $info['vGood'] = pq($item)->find('.digg .dyx span')->text();
+            $info['vBad'] = pq($item)->find('.digg .cyx span')->text();
             $info['tags'] = '';
             $info['content'] = '';
+
+            //todo ----> index
+//            $info['id'] = '';
+//            $gif = pq($item)->find('.listgif-giftu p>img')->attr('gifsrc');
+//            $info['img'] = $gif ? $gif : pq($item)->find('.listgif-giftu p>img')->attr('src');
+//            $info['title'] = pq($item)->find('.listgif-title h2 a')->text();
+//            $info['vGood'] = pq($item)->find('.digg .dyx')->text();
+//            $info['vBad'] = pq($item)->find('.digg .cyx')->text();
+//            $info['tags'] = '';
+//            $info['content'] = '';
 
             $info['title'] = str_replace(array('"',"'"), '”', $info['title']);
 

@@ -119,6 +119,20 @@ class WebController extends Controller {
     }
 
     /**
+     * 个人中心
+     */
+    public function actionUser(){
+        $this->render('user');
+    }
+
+    /**
+     * 注册页
+     */
+    public function actionRegister(){
+        $this->render('register');
+    }
+
+    /**
      * 审核页
      */
     public function actionReview(){

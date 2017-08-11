@@ -69,7 +69,7 @@ class CrawlController extends Controller {
         $startTime = time();
 
         $config = array(
-            'fileName' => 'vdata-gaoxiaogif-index-' . date('Ymd') . '.txt',
+            'fileName' => 'vdata-gaoxiaogif-' . date('Ymd') . '.txt',
         );
         $m = Crawl_gaoxiaogif::getInstance($config);
         $ret = $m->doCrawl();
